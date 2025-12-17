@@ -1,5 +1,5 @@
 import { Image } from 'expo-image';
-import { Platform, StyleSheet } from 'react-native';
+import { Platform, StyleSheet, Text, View } from 'react-native';
 
 import { HelloWave } from '@/components/hello-wave';
 import ParallaxScrollView from '@/components/parallax-scroll-view';
@@ -74,6 +74,10 @@ export default function HomeScreen() {
           <ThemedText type="defaultSemiBold">app-example</ThemedText>.
         </ThemedText>
       </ThemedView>
+
+      <View>
+        <Text className="text-red-400 font-bold text-2xl" onPress={() => alert('🇨🇳 中华人民共和国')}>🇨🇳 Hello Native</Text>
+      </View>
     </ParallaxScrollView>
   );
 }
