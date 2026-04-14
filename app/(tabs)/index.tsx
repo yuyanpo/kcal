@@ -1,0 +1,81 @@
+import { useState, useMemo, useCallback } from 'react';
+import { FlatList, View, Text, StyleSheet, useColorScheme, SafeAreaView } from 'react-native';
+import { useRouter } from 'expo-router';
+
+import { foods } from '../../data/foods';
+import { Category } from '../../data/types';
+import SearchBar from '../../components/SearchBar';
+import CategoryFilter from '../../components/CategoryFilter';
+import FoodCard from '../../components/FoodCard';
+
+export default function SearchScreen() {
+  const [query, setQuery] = useState('');
+  const [selectedCategory, setSelectedCategory] = useState<Category>('全部');
+  const router = useRouter();
+  const isDark = useColorScheme() === 'dark';
+
+  const filtered = useMemo(() => {
+    const q = query.trim().toLowerCase();
+    return foods.filter((food) => {
+      const matchesCategory = selectedCategory === '全部' || food.category === selectedCategory;
+      if (!matchesCategory) return false;
+      if (q === '') return true;
+      return (
+        food.name.includes(q) ||
+        food.pinyin.includes(q) ||
+        food.pinyinCompact.includes(q)
+      );
+    });
+  }, [query, selectedCategory]);
+
+  const handlePress = useCallback((id: string) => {
+    router.push(`/food/${id}`);
+  }, [router]);
+
+  return (
+    <SafeAreaView style={[styles.container, isDark && styles.containerDark]}>
+      <SearchBar value={query} onChangeText={setQuery} />
+      <CategoryFilter selected={selectedCategory} onSelect={setSelectedCategory} />
+      <FlatList
+        data={filtered}
+        keyExtractor={(item) => item.id}
+        renderItem={({ item }) => (
+          <FoodCard item={item} onPress={() => handlePress(item.id)} />
+        )}
+        contentContainerStyle={styles.list}
+        ListEmptyComponent={
+          <View style={styles.empty}>
+            <Text style={[styles.emptyText, isDark && styles.textLight]}>没有找到相关食物</Text>
+          </View>
+        }
+        keyboardShouldPersistTaps="handled"
+        showsVerticalScrollIndicator={false}
+      />
+    </SafeAreaView>
+  );
+}
+
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    backgroundColor: '#f7f7f7',
+  },
+  containerDark: {
+    backgroundColor: '#111',
+  },
+  list: {
+    paddingTop: 4,
+    paddingBottom: 24,
+  },
+  empty: {
+    alignItems: 'center',
+    paddingTop: 60,
+  },
+  emptyText: {
+    fontSize: 16,
+    color: '#999',
+  },
+  textLight: {
+    color: '#555',
+  },
+});

@@ -41,3 +41,15 @@ app-example
 # generated native folders
 /ios
 /android
+
+# ============================================
+# Claude Code 配置
+# ============================================
+
+# 个人本地配置（敏感）
+**/.claude/settings.local.json
+**/.claude/.env
+**/.claude/.env.*
+**/.claude/*.key
+**/.claude/*.pem
+**/.claude/secrets/
