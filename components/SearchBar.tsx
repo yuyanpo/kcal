@@ -5,9 +5,10 @@ interface Props {
   value: string;
   onChangeText: (text: string) => void;
   placeholder?: string;
+  autoFocus?: boolean;
 }
 
-export default function SearchBar({ value, onChangeText, placeholder = '搜索食物名称…' }: Props) {
+export default function SearchBar({ value, onChangeText, placeholder = '搜索食物名称…', autoFocus }: Props) {
   const isDark = useColorScheme() === 'dark';
 
   return (
@@ -19,6 +20,7 @@ export default function SearchBar({ value, onChangeText, placeholder = '搜索�
         onChangeText={onChangeText}
         placeholder={placeholder}
         placeholderTextColor={isDark ? '#666' : '#bbb'}
+        autoFocus={autoFocus}
         clearButtonMode="while-editing"
         returnKeyType="search"
       />
