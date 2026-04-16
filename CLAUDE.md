@@ -46,7 +46,17 @@ app/
 
 ### Styling
 
-NativeWind is configured but most styling uses `StyleSheet.create`. Primary brand color is `#FF6B35`. Dark mode is supported via `useColorScheme()` with manual `isDark` boolean checks — there is no theme context.
+**New code should use NativeWind utility classes.** Existing `StyleSheet.create` code is not being migrated.
+
+Design tokens are defined once in `tailwind.config.js` under `theme.extend.colors` and are the single source of truth for both NativeWind classes and any remaining `StyleSheet` hardcoded values. Key tokens:
+
+- `primary` → `#FF6B35` (brand orange)
+- `primary-bg` → `#FFF0EB` (light tint for badges/chips)
+- `card` / `card-dark`, `bg` / `bg-dark`, `input` / `input-dark` → surface backgrounds
+- `text-primary` … `text-faint` → six grey text levels
+- `border` / `border-dark` → dividers
+
+Dark mode uses `useColorScheme()` with manual `isDark` boolean checks — there is no theme context. NativeWind dark mode variant (`dark:`) is available for new code.
 
 ### `app-example/`
 
