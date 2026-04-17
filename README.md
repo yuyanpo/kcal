@@ -1,50 +1,52 @@
-# Welcome to your Expo app 👋
+# 卡路里 (Kcal)
 
-This is an [Expo](https://expo.dev) project created with [`create-expo-app`](https://www.npmjs.com/package/create-expo-app).
+一款中文食物热量查询 App，收录 242 种常见食物的营养成分数据。
 
-## Get started
+## 功能
 
-1. Install dependencies
+- **食物搜索**：支持中文名称及拼音搜索
+- **分类浏览**：谷薯类、蔬菜类、水果类、豆类、肉蛋奶类、坚果油脂类、加工食品及饮料类
+- **热量计算器**：输入克数实时换算卡路里
+- **营养成分详情**：展示 11 项营养指标，含参考摄入量进度条
+- **首页排行**：低能量、高蛋白推荐、高脂肪食物榜单
+- **深色模式**：支持亮色 / 暗色 / 跟随系统三种主题
 
-   ```bash
-   npm install
-   ```
+## 技术栈
 
-2. Start the app
+- [Expo](https://expo.dev) ~54 + React Native 0.81
+- [Expo Router](https://expo.github.io/router) 文件路由
+- [NativeWind](https://www.nativewind.dev) v4（Tailwind CSS for React Native）
+- TypeScript strict 模式
 
-   ```bash
-   npx expo start
-   ```
+## 数据来源
 
-In the output, you'll find options to open the app in a
+《中国食物成分表》常见食物营养成分查询表，静态数据存储于 `data/foods.ts`，无网络请求。
 
-- [development build](https://docs.expo.dev/develop/development-builds/introduction/)
-- [Android emulator](https://docs.expo.dev/workflow/android-studio-emulator/)
-- [iOS simulator](https://docs.expo.dev/workflow/ios-simulator/)
-- [Expo Go](https://expo.dev/go), a limited sandbox for trying out app development with Expo
-
-You can start developing by editing the files inside the **app** directory. This project uses [file-based routing](https://docs.expo.dev/router/introduction).
-
-## Get a fresh project
-
-When you're ready, run:
+## 开发
 
 ```bash
-npm run reset-project
+npm install
+npx expo start          # 启动开发服务器
+npx expo start --ios    # iOS 模拟器
+npx expo start --android
+npx expo start --web
+npx expo start --clear  # 清除 Metro 缓存后启动
+expo lint               # ESLint 检查
 ```
 
-This command will move the starter code to the **app-example** directory and create a blank **app** directory where you can start developing.
+## 目录结构
 
-## Learn more
-
-To learn more about developing your project with Expo, look at the following resources:
-
-- [Expo documentation](https://docs.expo.dev/): Learn fundamentals, or go into advanced topics with our [guides](https://docs.expo.dev/guides).
-- [Learn Expo tutorial](https://docs.expo.dev/tutorial/introduction/): Follow a step-by-step tutorial where you'll create a project that runs on Android, iOS, and the web.
-
-## Join the community
-
-Join our community of developers creating universal apps.
-
-- [Expo on GitHub](https://github.com/expo/expo): View our open source platform and contribute.
-- [Discord community](https://chat.expo.dev): Chat with Expo users and ask questions.
+```
+app/
+  (tabs)/         # 底部 Tab：首页 + 我的
+  food/[id].tsx   # 食物详情页
+  search.tsx      # 搜索页
+  settings.tsx    # 设置页（主题切换）
+  about.tsx       # 数据来源说明
+data/
+  foods.ts        # 242 种食物静态数据（勿手动编辑）
+  types.ts        # 类型定义与工具函数
+components/       # 公共组件
+context/
+  ThemeContext.tsx # 主题上下文（useIsDark hook）
+```
