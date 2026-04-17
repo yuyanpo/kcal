@@ -27,26 +27,29 @@ export default function SettingsScreen() {
         {THEME_OPTIONS.map((opt, i) => (
           <Pressable
             key={opt.value}
-            style={({ pressed }) => [
-              styles.row,
-              i < THEME_OPTIONS.length - 1 &&
-                (isDark ? styles.rowBorderDark : styles.rowBorder),
-              pressed && styles.rowPressed,
-            ]}
             onPress={() => setPreference(opt.value)}
+            style={({ pressed }) => [pressed && styles.rowPressed]}
           >
-            <Ionicons
-              name={opt.icon}
-              size={20}
-              color={isDark ? "#aaa" : "#666"}
-              style={styles.rowIcon}
-            />
-            <Text style={[styles.rowLabel, isDark && styles.rowLabelDark]}>
-              {opt.label}
-            </Text>
-            {preference === opt.value && (
-              <Ionicons name="checkmark" size={20} color="#FF6B35" />
-            )}
+            <View
+              style={[
+                styles.row,
+                i < THEME_OPTIONS.length - 1 &&
+                  (isDark ? styles.rowBorderDark : styles.rowBorder),
+              ]}
+            >
+              <Ionicons
+                name={opt.icon}
+                size={20}
+                color={isDark ? "#aaa" : "#666"}
+                style={styles.rowIcon}
+              />
+              <Text style={[styles.rowLabel, isDark && styles.rowLabelDark]}>
+                {opt.label}
+              </Text>
+              {preference === opt.value && (
+                <Ionicons name="checkmark" size={20} color="#FF6B35" />
+              )}
+            </View>
           </Pressable>
         ))}
       </View>
