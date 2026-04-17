@@ -1,6 +1,7 @@
 import { Stack, useLocalSearchParams, useRouter } from "expo-router";
 import { useCallback, useMemo, useState } from "react";
-import { FlatList, StyleSheet, Text, useColorScheme, View } from "react-native";
+import { FlatList, StyleSheet, Text, View } from "react-native";
+import { useIsDark } from "../context/ThemeContext";
 
 import CategoryFilter from "../components/CategoryFilter";
 import FoodCard from "../components/FoodCard";
@@ -16,7 +17,7 @@ export default function SearchScreen() {
   const [selectedCategory, setSelectedCategory] =
     useState<Category>(initialCategory);
   const router = useRouter();
-  const isDark = useColorScheme() === "dark";
+  const isDark = useIsDark();
 
   const filtered = useMemo(() => {
     const q = query.trim().toLowerCase();

@@ -1,5 +1,6 @@
-import { View, Text, StyleSheet, useColorScheme } from 'react-native';
-import { NutrientField, isNumber, formatNutrient } from '../data/types';
+import { StyleSheet, Text, View } from "react-native";
+import { useIsDark } from "../context/ThemeContext";
+import { NutrientField, formatNutrient, isNumber } from "../data/types";
 
 interface Props {
   label: string;
@@ -18,15 +19,16 @@ export default function NutrientRow({
   highlight = false,
   estimated = false,
 }: Props) {
-  const isDark = useColorScheme() === 'dark';
+  const isDark = useIsDark();
 
   const hasNumber = isNumber(value);
-  const percent = hasNumber && dailyRef && dailyRef > 0
-    ? Math.min((value / dailyRef) * 100, 100)
-    : null;
+  const percent =
+    hasNumber && dailyRef && dailyRef > 0
+      ? Math.min((value / dailyRef) * 100, 100)
+      : null;
 
   const displayText = hasNumber
-    ? `${formatNutrient(value)}${unit ? ` ${unit}` : ''}`
+    ? `${formatNutrient(value)}${unit ? ` ${unit}` : ""}`
     : formatNutrient(value);
 
   // 未检测 / 未检出时颜色变淡
@@ -34,13 +36,23 @@ export default function NutrientRow({
 
   return (
     <View style={[styles.row, isDark && styles.rowDark]}>
-      <Text style={[styles.label, isDark && styles.textLight, highlight && styles.labelHighlight]}>
+      <Text
+        style={[
+          styles.label,
+          isDark && styles.textLight,
+          highlight && styles.labelHighlight,
+        ]}
+      >
         {label}
       </Text>
       <View style={styles.right}>
         {percent !== null && (
-          <View style={[styles.barContainer, isDark && styles.barContainerDark]}>
-            <View style={[styles.bar, { width: `${percent}%` as `${number}%` }]} />
+          <View
+            style={[styles.barContainer, isDark && styles.barContainerDark]}
+          >
+            <View
+              style={[styles.bar, { width: `${percent}%` as `${number}%` }]}
+            />
           </View>
         )}
         <Text
@@ -52,7 +64,9 @@ export default function NutrientRow({
           ]}
         >
           {displayText}
-          {estimated && hasNumber && <Text style={styles.estimatedMark}>*</Text>}
+          {estimated && hasNumber && (
+            <Text style={styles.estimatedMark}>*</Text>
+          )}
         </Text>
       </View>
     </View>
@@ -61,67 +75,67 @@ export default function NutrientRow({
 
 const styles = StyleSheet.create({
   row: {
-    flexDirection: 'row',
-    alignItems: 'center',
+    flexDirection: "row",
+    alignItems: "center",
     paddingVertical: 11,
     paddingHorizontal: 16,
     borderBottomWidth: StyleSheet.hairlineWidth,
-    borderBottomColor: '#f0f0f0',
-    backgroundColor: '#fff',
+    borderBottomColor: "#f0f0f0",
+    backgroundColor: "#fff",
   },
   rowDark: {
-    backgroundColor: '#1e1e1e',
-    borderBottomColor: '#2a2a2a',
+    backgroundColor: "#1e1e1e",
+    borderBottomColor: "#2a2a2a",
   },
   label: {
     flex: 1,
     fontSize: 15,
-    color: '#333',
+    color: "#333",
   },
   labelHighlight: {
-    fontWeight: '700',
-    color: '#FF6B35',
+    fontWeight: "700",
+    color: "#FF6B35",
   },
   textLight: {
-    color: '#ccc',
+    color: "#ccc",
   },
   right: {
-    flexDirection: 'row',
-    alignItems: 'center',
+    flexDirection: "row",
+    alignItems: "center",
     gap: 8,
   },
   barContainer: {
     width: 60,
     height: 5,
-    backgroundColor: '#f0f0f0',
+    backgroundColor: "#f0f0f0",
     borderRadius: 3,
-    overflow: 'hidden',
+    overflow: "hidden",
   },
   barContainerDark: {
-    backgroundColor: '#333',
+    backgroundColor: "#333",
   },
   bar: {
-    height: '100%',
-    backgroundColor: '#FF6B35',
+    height: "100%",
+    backgroundColor: "#FF6B35",
     borderRadius: 3,
   },
   value: {
     fontSize: 15,
-    color: '#111',
+    color: "#111",
     minWidth: 80,
-    textAlign: 'right',
+    textAlign: "right",
   },
   valueHighlight: {
-    fontWeight: '700',
-    color: '#FF6B35',
+    fontWeight: "700",
+    color: "#FF6B35",
     fontSize: 17,
   },
   valueSpecial: {
-    color: '#bbb',
-    fontStyle: 'italic',
+    color: "#bbb",
+    fontStyle: "italic",
   },
   estimatedMark: {
     fontSize: 12,
-    color: '#FF6B35',
+    color: "#FF6B35",
   },
 });

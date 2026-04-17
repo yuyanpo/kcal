@@ -1,5 +1,6 @@
-import { View, Text, TouchableOpacity, StyleSheet, useColorScheme } from 'react-native';
-import { FoodItem, isNumber, formatNutrient } from '../data/types';
+import { StyleSheet, Text, TouchableOpacity, View } from "react-native";
+import { useIsDark } from "../context/ThemeContext";
+import { FoodItem, formatNutrient, isNumber } from "../data/types";
 
 interface Props {
   item: FoodItem;
@@ -7,13 +8,17 @@ interface Props {
 }
 
 export default function FoodCard({ item, onPress }: Props) {
-  const isDark = useColorScheme() === 'dark';
+  const isDark = useIsDark();
 
-  const kcalText = isNumber(item.energy) ? `${item.energy} kcal` : formatNutrient(item.energy);
-  const isEstimatedEnergy = item.estimated?.includes('energy');
+  const kcalText = isNumber(item.energy)
+    ? `${item.energy} kcal`
+    : formatNutrient(item.energy);
+  const isEstimatedEnergy = item.estimated?.includes("energy");
 
-  const proteinText = isNumber(item.protein) ? `蛋白质 ${formatNutrient(item.protein)}g` : '';
-  const fatText = isNumber(item.fat) ? `脂肪 ${formatNutrient(item.fat)}g` : '';
+  const proteinText = isNumber(item.protein)
+    ? `蛋白质 ${formatNutrient(item.protein)}g`
+    : "";
+  const fatText = isNumber(item.fat) ? `脂肪 ${formatNutrient(item.fat)}g` : "";
 
   return (
     <TouchableOpacity
@@ -22,7 +27,10 @@ export default function FoodCard({ item, onPress }: Props) {
       activeOpacity={0.75}
     >
       <View style={styles.left}>
-        <Text style={[styles.name, isDark && styles.textLight]} numberOfLines={1}>
+        <Text
+          style={[styles.name, isDark && styles.textLight]}
+          numberOfLines={1}
+        >
           {item.name}
         </Text>
         <View style={styles.meta}>
@@ -30,17 +38,23 @@ export default function FoodCard({ item, onPress }: Props) {
             <Text style={styles.categoryText}>{item.category}</Text>
           </View>
           {proteinText ? (
-            <Text style={[styles.sub, isDark && styles.subDark]}>{proteinText}</Text>
+            <Text style={[styles.sub, isDark && styles.subDark]}>
+              {proteinText}
+            </Text>
           ) : null}
           {fatText ? (
-            <Text style={[styles.sub, isDark && styles.subDark]}>{fatText}</Text>
+            <Text style={[styles.sub, isDark && styles.subDark]}>
+              {fatText}
+            </Text>
           ) : null}
         </View>
       </View>
       <View style={styles.right}>
         <Text style={styles.kcal}>
           {kcalText}
-          {isEstimatedEnergy ? <Text style={styles.estimatedMark}>*</Text> : null}
+          {isEstimatedEnergy ? (
+            <Text style={styles.estimatedMark}>*</Text>
+          ) : null}
         </Text>
         <Text style={[styles.per100, isDark && styles.subDark]}>/100g</Text>
       </View>
@@ -50,21 +64,21 @@ export default function FoodCard({ item, onPress }: Props) {
 
 const styles = StyleSheet.create({
   card: {
-    flexDirection: 'row',
-    alignItems: 'center',
-    backgroundColor: '#fff',
+    flexDirection: "row",
+    alignItems: "center",
+    backgroundColor: "#fff",
     marginHorizontal: 16,
     marginBottom: 10,
     borderRadius: 14,
     padding: 14,
-    shadowColor: '#000',
+    shadowColor: "#000",
     shadowOffset: { width: 0, height: 1 },
     shadowOpacity: 0.06,
     shadowRadius: 4,
     elevation: 2,
   },
   cardDark: {
-    backgroundColor: '#1e1e1e',
+    backgroundColor: "#1e1e1e",
   },
   left: {
     flex: 1,
@@ -72,53 +86,53 @@ const styles = StyleSheet.create({
   },
   name: {
     fontSize: 16,
-    fontWeight: '600',
-    color: '#111',
+    fontWeight: "600",
+    color: "#111",
     marginBottom: 6,
   },
   textLight: {
-    color: '#eee',
+    color: "#eee",
   },
   meta: {
-    flexDirection: 'row',
-    flexWrap: 'wrap',
-    alignItems: 'center',
+    flexDirection: "row",
+    flexWrap: "wrap",
+    alignItems: "center",
     gap: 6,
   },
   categoryBadge: {
-    backgroundColor: '#FFF0EB',
+    backgroundColor: "#FFF0EB",
     paddingHorizontal: 8,
     paddingVertical: 2,
     borderRadius: 6,
   },
   categoryText: {
     fontSize: 12,
-    color: '#FF6B35',
-    fontWeight: '500',
+    color: "#FF6B35",
+    fontWeight: "500",
   },
   sub: {
     fontSize: 12,
-    color: '#888',
+    color: "#888",
   },
   subDark: {
-    color: '#666',
+    color: "#666",
   },
   right: {
-    alignItems: 'flex-end',
+    alignItems: "flex-end",
   },
   kcal: {
     fontSize: 20,
-    fontWeight: '700',
-    color: '#FF6B35',
+    fontWeight: "700",
+    color: "#FF6B35",
   },
   estimatedMark: {
     fontSize: 14,
-    color: '#FF6B35',
-    fontWeight: '400',
+    color: "#FF6B35",
+    fontWeight: "400",
   },
   per100: {
     fontSize: 11,
-    color: '#aaa',
+    color: "#aaa",
     marginTop: 2,
   },
 });

@@ -1,6 +1,7 @@
 import { useState, useMemo } from 'react';
-import { ScrollView, View, Text, TextInput, StyleSheet, useColorScheme } from 'react-native';
+import { ScrollView, View, Text, TextInput, StyleSheet } from 'react-native';
 import { useLocalSearchParams, Stack } from 'expo-router';
+import { useIsDark } from '../../context/ThemeContext';
 
 import { foods } from '../../data/foods';
 import { NutrientField, isNumber, formatNutrient } from '../../data/types';
@@ -28,7 +29,7 @@ function scale(v: NutrientField, factor: number): NutrientField {
 export default function FoodDetailScreen() {
   const { id } = useLocalSearchParams<{ id: string }>();
   const [grams, setGrams] = useState('100');
-  const isDark = useColorScheme() === 'dark';
+  const isDark = useIsDark();
 
   const food = foods.find((f) => f.id === id);
   const g = parseFloat(grams) || 0;

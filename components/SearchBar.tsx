@@ -1,5 +1,6 @@
 import { Ionicons } from "@expo/vector-icons";
-import { StyleSheet, TextInput, useColorScheme, View } from "react-native";
+import { StyleSheet, TextInput, View } from "react-native";
+import { useIsDark } from "../context/ThemeContext";
 
 interface Props {
   value: string;
@@ -14,7 +15,7 @@ export default function SearchBar({
   placeholder = "搜索食物名称…",
   autoFocus,
 }: Props) {
-  const isDark = useColorScheme() === "dark";
+  const isDark = useIsDark();
 
   return (
     <View style={[styles.container, isDark && styles.containerDark]}>

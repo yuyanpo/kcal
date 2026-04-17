@@ -1,5 +1,6 @@
-import { ScrollView, TouchableOpacity, Text, StyleSheet, useColorScheme } from 'react-native';
-import { CATEGORIES, Category } from '../data/types';
+import { ScrollView, StyleSheet, Text, TouchableOpacity } from "react-native";
+import { useIsDark } from "../context/ThemeContext";
+import { CATEGORIES, Category } from "../data/types";
 
 interface Props {
   selected: Category;
@@ -7,7 +8,7 @@ interface Props {
 }
 
 export default function CategoryFilter({ selected, onSelect }: Props) {
-  const isDark = useColorScheme() === 'dark';
+  const isDark = useIsDark();
 
   return (
     <ScrollView
@@ -29,7 +30,13 @@ export default function CategoryFilter({ selected, onSelect }: Props) {
             ]}
             activeOpacity={0.7}
           >
-            <Text style={[styles.chipText, isDark && styles.chipTextDark, isActive && styles.chipTextActive]}>
+            <Text
+              style={[
+                styles.chipText,
+                isDark && styles.chipTextDark,
+                isActive && styles.chipTextActive,
+              ]}
+            >
               {cat}
             </Text>
           </TouchableOpacity>
@@ -48,30 +55,30 @@ const styles = StyleSheet.create({
     paddingHorizontal: 12,
     paddingVertical: 8,
     gap: 8,
-    flexDirection: 'row',
-    alignItems: 'center',
+    flexDirection: "row",
+    alignItems: "center",
   },
   chip: {
     paddingHorizontal: 14,
     paddingVertical: 6,
     borderRadius: 20,
-    backgroundColor: '#f2f2f2',
+    backgroundColor: "#f2f2f2",
   },
   chipDark: {
-    backgroundColor: '#2a2a2a',
+    backgroundColor: "#2a2a2a",
   },
   chipActive: {
-    backgroundColor: '#FF6B35',
+    backgroundColor: "#FF6B35",
   },
   chipText: {
     fontSize: 14,
-    color: '#555',
+    color: "#555",
   },
   chipTextDark: {
-    color: '#bbb',
+    color: "#bbb",
   },
   chipTextActive: {
-    color: '#fff',
-    fontWeight: '600',
+    color: "#fff",
+    fontWeight: "600",
   },
 });

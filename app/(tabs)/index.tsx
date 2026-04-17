@@ -7,10 +7,10 @@ import {
   StyleSheet,
   Text,
   TouchableOpacity,
-  useColorScheme,
   View,
 } from "react-native";
 import { useSafeAreaInsets } from "react-native-safe-area-context";
+import { useIsDark } from "../../context/ThemeContext";
 
 import { foods } from "../../data/foods";
 import { CATEGORIES, isNumber } from "../../data/types";
@@ -54,7 +54,7 @@ const recommended = foods
 
 export default function HomeScreen() {
   const router = useRouter();
-  const isDark = useColorScheme() === "dark";
+  const isDark = useIsDark();
   const insets = useSafeAreaInsets();
 
   const goSearch = useCallback(
