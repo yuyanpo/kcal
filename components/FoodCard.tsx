@@ -1,6 +1,10 @@
-import { StyleSheet, Text, TouchableOpacity, View } from "react-native";
+import { useState } from "react";
+import { Image, StyleSheet, Text, TouchableOpacity, View } from "react-native";
 import { useIsDark } from "../context/ThemeContext";
+import { getFoodImageUrl } from "../data/imageUtils";
 import { FoodItem, formatNutrient, isNumber } from "../data/types";
+
+const noImage = require("../assets/images/no-image.png");
 
 interface Props {
   item: FoodItem;
@@ -9,6 +13,10 @@ interface Props {
 
 export default function FoodCard({ item, onPress }: Props) {
   const isDark = useIsDark();
+  const [imgError, setImgError] = useState(false);
+
+  const imageUrl = getFoodImageUrl(item.image);
+  const showRemote = imageUrl && !imgError;
 
   const kcalText = isNumber(item.energy)
     ? `${item.energy} kcal`
@@ -26,6 +34,18 @@ export default function FoodCard({ item, onPress }: Props) {
       onPress={onPress}
       activeOpacity={0.75}
     >
+      {/* 食物图片 */}
+      <View
+        className={`rounded-xl overflow-hidden ${isDark ? "bg-[#2a2a2a]" : "bg-[#f0f0f0]"}`}
+        style={{ width: 56, height: 56, flexShrink: 0 }}
+      >
+        <Image
+          source={showRemote ? { uri: imageUrl } : noImage}
+          style={{ width: 56, height: 56 }}
+          onError={() => setImgError(true)}
+        />
+      </View>
+
       <View style={styles.left}>
         <Text
           style={[styles.name, isDark && styles.textLight]}
@@ -70,7 +90,8 @@ const styles = StyleSheet.create({
     marginHorizontal: 16,
     marginBottom: 10,
     borderRadius: 14,
-    padding: 14,
+    padding: 12,
+    gap: 12,
     shadowColor: "#000",
     shadowOffset: { width: 0, height: 1 },
     shadowOpacity: 0.06,
@@ -82,7 +103,6 @@ const styles = StyleSheet.create({
   },
   left: {
     flex: 1,
-    marginRight: 12,
   },
   name: {
     fontSize: 16,

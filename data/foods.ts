@@ -1,4 +1,4 @@
-import { FoodItem } from './types';
+import { FoodItem } from "./types";
 
 export const foods: FoodItem[] = [
   {
@@ -18,6 +18,7 @@ export const foods: FoodItem[] = [
     calcium: 14,
     magnesium: 5,
     iron: 0.6,
+    image: "grains/dianfen.jpg",
   },
   {
     id: "2",
@@ -36,6 +37,7 @@ export const foods: FoodItem[] = [
     calcium: 8,
     magnesium: 23,
     iron: 0.8,
+    image: "grains/malingshu.jpg",
   },
   {
     id: "3",
@@ -52,8 +54,9 @@ export const foods: FoodItem[] = [
     potassium: 32,
     sodium: 5,
     calcium: 22,
-    magnesium: 'not_measured',
+    magnesium: "not_measured",
     iron: 1.8,
+    image: "grains/dianfen.jpg",
   },
   {
     id: "4",
@@ -72,6 +75,7 @@ export const foods: FoodItem[] = [
     calcium: 11,
     magnesium: 6,
     iron: 2.4,
+    image: "grains/mifen.jpg",
   },
   {
     id: "5",
@@ -90,6 +94,7 @@ export const foods: FoodItem[] = [
     calcium: 24,
     magnesium: 17,
     iron: 0.8,
+    image: "grains/ganshu.jpg",
   },
   {
     id: "6",
@@ -108,6 +113,7 @@ export const foods: FoodItem[] = [
     calcium: 7,
     magnesium: 15,
     iron: 1.3,
+    image: "grains/mifan.jpg",
   },
   {
     id: "7",
@@ -126,6 +132,7 @@ export const foods: FoodItem[] = [
     calcium: 19,
     magnesium: 12,
     iron: 0.4,
+    image: "grains/huajuan.jpg",
   },
   {
     id: "8",
@@ -144,6 +151,7 @@ export const foods: FoodItem[] = [
     calcium: 24,
     magnesium: 29,
     iron: 2,
+    image: "grains/miantiao.jpg",
   },
   {
     id: "9",
@@ -162,6 +170,7 @@ export const foods: FoodItem[] = [
     calcium: 29,
     magnesium: 40,
     iron: 2.5,
+    image: "grains/mianjin.jpg",
   },
   {
     id: "10",
@@ -180,6 +189,7 @@ export const foods: FoodItem[] = [
     calcium: 38,
     magnesium: 30,
     iron: 1.8,
+    image: "grains/mantou.jpg",
   },
   {
     id: "11",
@@ -198,6 +208,7 @@ export const foods: FoodItem[] = [
     calcium: 13,
     magnesium: 34,
     iron: 2.3,
+    image: "grains/daomi.jpg",
   },
   {
     id: "12",
@@ -216,6 +227,7 @@ export const foods: FoodItem[] = [
     calcium: 26,
     magnesium: 49,
     iron: 1.4,
+    image: "grains/nuomi.jpg",
   },
   {
     id: "13",
@@ -234,6 +246,7 @@ export const foods: FoodItem[] = [
     calcium: 27,
     magnesium: 32,
     iron: 0.7,
+    image: "grains/xiaomaimianfen.jpg",
   },
   {
     id: "14",
@@ -249,9 +262,10 @@ export const foods: FoodItem[] = [
     water: 71.3,
     potassium: 238,
     sodium: 1.1,
-    calcium: 'not_measured',
+    calcium: "not_measured",
     magnesium: 32,
     iron: 1.1,
+    image: "grains/yumi.jpg",
   },
   {
     id: "15",
@@ -270,6 +284,7 @@ export const foods: FoodItem[] = [
     calcium: 49,
     magnesium: 151,
     iron: 0.2,
+    image: "grains/yumishen.jpg",
   },
   {
     id: "16",
@@ -288,6 +303,7 @@ export const foods: FoodItem[] = [
     calcium: 14,
     magnesium: 51,
     iron: 3.5,
+    image: "grains/guamian.jpg",
   },
   {
     id: "17",
@@ -306,6 +322,7 @@ export const foods: FoodItem[] = [
     calcium: 8,
     magnesium: 50,
     iron: 1.6,
+    image: "grains/xiaomi.jpg",
   },
   {
     id: "18",
@@ -324,6 +341,7 @@ export const foods: FoodItem[] = [
     calcium: 12,
     magnesium: 111,
     iron: 1.3,
+    image: "grains/yumimian.jpg",
   },
   {
     id: "19",
@@ -342,6 +360,7 @@ export const foods: FoodItem[] = [
     calcium: 31,
     magnesium: 50,
     iron: 3.5,
+    image: "grains/xiaomaifen.jpg",
   },
   {
     id: "20",
@@ -360,6 +379,7 @@ export const foods: FoodItem[] = [
     calcium: 42,
     magnesium: 88,
     iron: 3.6,
+    image: "grains/yimi.jpg",
   },
   {
     id: "21",
@@ -378,6 +398,7 @@ export const foods: FoodItem[] = [
     calcium: 41,
     magnesium: 107,
     iron: 5.1,
+    image: "grains/xiaomi.jpg",
   },
   {
     id: "22",
@@ -396,6 +417,7 @@ export const foods: FoodItem[] = [
     calcium: 71,
     magnesium: 151,
     iron: 7,
+    image: "grains/qiaomaimian.jpg",
   },
   {
     id: "23",
@@ -414,6 +436,7 @@ export const foods: FoodItem[] = [
     calcium: 40,
     magnesium: 62,
     iron: 3.8,
+    image: "grains/youmaimian.jpg",
   },
   {
     id: "24",
@@ -432,6 +455,7 @@ export const foods: FoodItem[] = [
     calcium: 47,
     magnesium: 258,
     iron: 6.2,
+    image: "grains/qiaomai.jpg",
   },
   {
     id: "25",
@@ -450,6 +474,7 @@ export const foods: FoodItem[] = [
     calcium: 171,
     magnesium: 18,
     iron: 27.8,
+    image: "grains/nanguafen.jpg",
   },
   {
     id: "26",
@@ -468,6 +493,7 @@ export const foods: FoodItem[] = [
     calcium: 22,
     magnesium: 129,
     iron: 6.3,
+    image: "grains/gaoliangmi.jpg",
   },
   {
     id: "27",
@@ -486,6 +512,7 @@ export const foods: FoodItem[] = [
     calcium: 12,
     magnesium: 147,
     iron: 1.6,
+    image: "grains/heimi.jpg",
   },
   {
     id: "28",
@@ -504,6 +531,7 @@ export const foods: FoodItem[] = [
     calcium: 113,
     magnesium: 65,
     iron: 40.7,
+    image: "grains/qingke.jpg",
   },
   {
     id: "29",
@@ -522,6 +550,7 @@ export const foods: FoodItem[] = [
     calcium: 34,
     magnesium: 57,
     iron: 5.5,
+    image: "vegetables/muer.jpg",
   },
   {
     id: "30",
@@ -540,6 +569,7 @@ export const foods: FoodItem[] = [
     calcium: 19,
     magnesium: 8,
     iron: 0.2,
+    image: "vegetables/donggua.jpg",
   },
   {
     id: "31",
@@ -551,14 +581,15 @@ export const foods: FoodItem[] = [
     protein: 0.8,
     phosphorus: 13,
     pProteinRatio: 16.3,
-    fat: 'not_detected',
+    fat: "not_detected",
     water: 95.8,
     potassium: 4,
     sodium: 4.4,
     calcium: 40,
     magnesium: 9,
     iron: 0.2,
-    estimated: ['energy'],
+    estimated: ["energy"],
+    image: "vegetables/fanggua.jpg",
   },
   {
     id: "32",
@@ -577,6 +608,7 @@ export const foods: FoodItem[] = [
     calcium: 16,
     magnesium: 7,
     iron: 0.4,
+    image: "vegetables/hulu.jpg",
   },
   {
     id: "33",
@@ -595,6 +627,7 @@ export const foods: FoodItem[] = [
     calcium: 32,
     magnesium: 7,
     iron: 0.5,
+    image: "vegetables/huluobo.jpg",
   },
   {
     id: "34",
@@ -613,6 +646,7 @@ export const foods: FoodItem[] = [
     calcium: 17,
     magnesium: 10,
     iron: 0.1,
+    image: "vegetables/foshougua.jpg",
   },
   {
     id: "35",
@@ -631,6 +665,7 @@ export const foods: FoodItem[] = [
     calcium: 51,
     magnesium: 16,
     iron: 0.9,
+    image: "vegetables/helandou.jpg",
   },
   {
     id: "36",
@@ -649,6 +684,7 @@ export const foods: FoodItem[] = [
     calcium: 14,
     magnesium: 12,
     iron: 0.8,
+    image: "vegetables/shizijiao.jpg",
   },
   {
     id: "37",
@@ -667,6 +703,7 @@ export const foods: FoodItem[] = [
     calcium: 65,
     magnesium: 15,
     iron: 0.4,
+    image: "vegetables/jieqiuganlan.jpg",
   },
   {
     id: "38",
@@ -685,6 +722,7 @@ export const foods: FoodItem[] = [
     calcium: 24,
     magnesium: 13,
     iron: 0.5,
+    image: "vegetables/qiezi.jpg",
   },
   {
     id: "39",
@@ -703,6 +741,7 @@ export const foods: FoodItem[] = [
     calcium: 10,
     magnesium: 9,
     iron: 0.4,
+    image: "vegetables/xihongshi.jpg",
   },
   {
     id: "40",
@@ -721,6 +760,7 @@ export const foods: FoodItem[] = [
     calcium: 24,
     magnesium: 15,
     iron: 0.5,
+    image: "vegetables/huanggua.jpg",
   },
   {
     id: "41",
@@ -739,6 +779,7 @@ export const foods: FoodItem[] = [
     calcium: 68,
     magnesium: 34,
     iron: 0.5,
+    image: "vegetables/luobo.jpg",
   },
   {
     id: "42",
@@ -757,6 +798,7 @@ export const foods: FoodItem[] = [
     calcium: 16,
     magnesium: 8,
     iron: 0.4,
+    image: "vegetables/nangua.jpg",
   },
   {
     id: "43",
@@ -775,6 +817,7 @@ export const foods: FoodItem[] = [
     calcium: 24,
     magnesium: 17,
     iron: 0.8,
+    image: "vegetables/qingsuan.jpg",
   },
   {
     id: "44",
@@ -793,6 +836,7 @@ export const foods: FoodItem[] = [
     calcium: 49,
     magnesium: 12,
     iron: 0.6,
+    image: "vegetables/ganlan.jpg",
   },
   {
     id: "45",
@@ -811,6 +855,7 @@ export const foods: FoodItem[] = [
     calcium: 36,
     magnesium: 16,
     iron: 0.5,
+    image: "vegetables/bailuobo.jpg",
   },
   {
     id: "46",
@@ -829,6 +874,7 @@ export const foods: FoodItem[] = [
     calcium: 34,
     magnesium: 18,
     iron: 0.9,
+    image: "vegetables/shengcai.jpg",
   },
   {
     id: "47",
@@ -847,6 +893,7 @@ export const foods: FoodItem[] = [
     calcium: 14,
     magnesium: 11,
     iron: 0.4,
+    image: "vegetables/sigua.jpg",
   },
   {
     id: "48",
@@ -865,6 +912,7 @@ export const foods: FoodItem[] = [
     calcium: 241,
     magnesium: 61,
     iron: 3.3,
+    image: "vegetables/haidai.jpg",
   },
   {
     id: "49",
@@ -878,11 +926,12 @@ export const foods: FoodItem[] = [
     pProteinRatio: 20.7,
     fat: 0.1,
     water: 94.6,
-    potassium: 'not_measured',
+    potassium: "not_measured",
     sodium: 57.5,
     calcium: 50,
     magnesium: 11,
     iron: 0.7,
+    image: "vegetables/dabaicai.jpg",
   },
   {
     id: "50",
@@ -894,13 +943,14 @@ export const foods: FoodItem[] = [
     protein: 1.5,
     phosphorus: 33,
     pProteinRatio: 20,
-    fat: 'not_measured',
+    fat: "not_measured",
     water: 94.8,
     potassium: 150,
     sodium: 73.5,
     calcium: 76,
     magnesium: 28,
     iron: 0.5,
+    image: "vegetables/gaicai.jpg",
   },
   {
     id: "51",
@@ -919,6 +969,7 @@ export const foods: FoodItem[] = [
     calcium: 16,
     magnesium: 20,
     iron: 0.3,
+    image: "vegetables/shanyao.jpg",
   },
   {
     id: "52",
@@ -937,6 +988,7 @@ export const foods: FoodItem[] = [
     calcium: 14,
     magnesium: 18,
     iron: 0.7,
+    image: "vegetables/kugua.jpg",
   },
   {
     id: "53",
@@ -955,6 +1007,7 @@ export const foods: FoodItem[] = [
     calcium: 73,
     magnesium: 20,
     iron: 2.5,
+    image: "vegetables/tongsong.jpg",
   },
   {
     id: "54",
@@ -973,6 +1026,7 @@ export const foods: FoodItem[] = [
     calcium: 90,
     magnesium: 18,
     iron: 1.9,
+    image: "vegetables/xiaobaicai.jpg",
   },
   {
     id: "55",
@@ -991,6 +1045,7 @@ export const foods: FoodItem[] = [
     calcium: 4,
     magnesium: 8,
     iron: 0.4,
+    image: "vegetables/jiaobai.jpg",
   },
   {
     id: "56",
@@ -1009,6 +1064,7 @@ export const foods: FoodItem[] = [
     calcium: 42,
     magnesium: 25,
     iron: 1.6,
+    image: "vegetables/jiucai.jpg",
   },
   {
     id: "57",
@@ -1027,6 +1083,7 @@ export const foods: FoodItem[] = [
     calcium: 99,
     magnesium: 29,
     iron: 2.3,
+    image: "vegetables/kongxincai.jpg",
   },
   {
     id: "58",
@@ -1045,6 +1102,7 @@ export const foods: FoodItem[] = [
     calcium: 29,
     magnesium: 19,
     iron: 0.7,
+    image: "vegetables/dacong.jpg",
   },
   {
     id: "59",
@@ -1063,6 +1121,7 @@ export const foods: FoodItem[] = [
     calcium: 80,
     magnesium: 18,
     iron: 1.2,
+    image: "vegetables/qincai.jpg",
   },
   {
     id: "60",
@@ -1081,6 +1140,7 @@ export const foods: FoodItem[] = [
     calcium: 48,
     magnesium: 21,
     iron: 1.6,
+    image: "vegetables/suanbaicai.jpg",
   },
   {
     id: "61",
@@ -1099,6 +1159,7 @@ export const foods: FoodItem[] = [
     calcium: 108,
     magnesium: 22,
     iron: 1.2,
+    image: "vegetables/youcai.jpg",
   },
   {
     id: "62",
@@ -1117,6 +1178,7 @@ export const foods: FoodItem[] = [
     calcium: 24,
     magnesium: 15,
     iron: 0.6,
+    image: "vegetables/congtou.jpg",
   },
   {
     id: "63",
@@ -1135,6 +1197,7 @@ export const foods: FoodItem[] = [
     calcium: 10,
     magnesium: 10,
     iron: 1.4,
+    image: "vegetables/lusun.jpg",
   },
   {
     id: "64",
@@ -1153,6 +1216,7 @@ export const foods: FoodItem[] = [
     calcium: 29,
     magnesium: 18,
     iron: 1.4,
+    image: "vegetables/suanmiao.jpg",
   },
   {
     id: "65",
@@ -1171,6 +1235,7 @@ export const foods: FoodItem[] = [
     calcium: 4,
     magnesium: 12,
     iron: 0.6,
+    image: "vegetables/biqi.jpg",
   },
   {
     id: "66",
@@ -1189,6 +1254,7 @@ export const foods: FoodItem[] = [
     calcium: 66,
     magnesium: 58,
     iron: 2.9,
+    image: "vegetables/bocai.jpg",
   },
   {
     id: "67",
@@ -1207,6 +1273,7 @@ export const foods: FoodItem[] = [
     calcium: 23,
     magnesium: 18,
     iron: 1.1,
+    image: "vegetables/caihua.jpg",
   },
   {
     id: "68",
@@ -1225,6 +1292,7 @@ export const foods: FoodItem[] = [
     calcium: 25,
     magnesium: 12,
     iron: 1.7,
+    image: "vegetables/jiuhuang.jpg",
   },
   {
     id: "69",
@@ -1243,6 +1311,7 @@ export const foods: FoodItem[] = [
     calcium: 23,
     magnesium: 19,
     iron: 0.9,
+    image: "vegetables/wosun.jpg",
   },
   {
     id: "70",
@@ -1261,6 +1330,7 @@ export const foods: FoodItem[] = [
     calcium: 128,
     magnesium: 18,
     iron: 2,
+    image: "vegetables/jielan.jpg",
   },
   {
     id: "71",
@@ -1279,6 +1349,7 @@ export const foods: FoodItem[] = [
     calcium: 42,
     magnesium: 27,
     iron: 1.5,
+    image: "vegetables/sijidou.jpg",
   },
   {
     id: "72",
@@ -1297,6 +1368,7 @@ export const foods: FoodItem[] = [
     calcium: 2,
     magnesium: 11,
     iron: 0.3,
+    image: "vegetables/xianggu.jpg",
   },
   {
     id: "73",
@@ -1315,6 +1387,7 @@ export const foods: FoodItem[] = [
     calcium: 29,
     magnesium: 35,
     iron: 1.5,
+    image: "vegetables/doujiao.jpg",
   },
   {
     id: "74",
@@ -1333,6 +1406,7 @@ export const foods: FoodItem[] = [
     calcium: 36,
     magnesium: 23,
     iron: 1,
+    image: "vegetables/yutou.jpg",
   },
   {
     id: "75",
@@ -1351,6 +1425,7 @@ export const foods: FoodItem[] = [
     calcium: 39,
     magnesium: 19,
     iron: 1.4,
+    image: "vegetables/ou.jpg",
   },
   {
     id: "76",
@@ -1369,6 +1444,7 @@ export const foods: FoodItem[] = [
     calcium: 11,
     magnesium: 43,
     iron: 1,
+    image: "vegetables/baihe.jpg",
   },
   {
     id: "77",
@@ -1387,6 +1463,7 @@ export const foods: FoodItem[] = [
     calcium: 178,
     magnesium: 38,
     iron: 2.9,
+    image: "vegetables/xiancai.jpg",
   },
   {
     id: "78",
@@ -1405,6 +1482,7 @@ export const foods: FoodItem[] = [
     calcium: 40,
     magnesium: 21,
     iron: 4.2,
+    image: "vegetables/wandoumiao.jpg",
   },
   {
     id: "79",
@@ -1423,6 +1501,7 @@ export const foods: FoodItem[] = [
     calcium: 67,
     magnesium: 17,
     iron: 1,
+    image: "vegetables/xilanhua.jpg",
   },
   {
     id: "80",
@@ -1441,6 +1520,7 @@ export const foods: FoodItem[] = [
     calcium: 21,
     magnesium: 21,
     iron: 0.9,
+    image: "vegetables/huangdouya.jpg",
   },
   {
     id: "81",
@@ -1459,6 +1539,7 @@ export const foods: FoodItem[] = [
     calcium: 294,
     magnesium: 37,
     iron: 5.4,
+    image: "vegetables/qicai.jpg",
   },
   {
     id: "82",
@@ -1477,6 +1558,7 @@ export const foods: FoodItem[] = [
     calcium: 5,
     magnesium: 14,
     iron: 1,
+    image: "vegetables/pinggu.jpg",
   },
   {
     id: "83",
@@ -1495,6 +1577,7 @@ export const foods: FoodItem[] = [
     calcium: 6,
     magnesium: 11,
     iron: 1.2,
+    image: "vegetables/mogu.jpg",
   },
   {
     id: "84",
@@ -1510,9 +1593,10 @@ export const foods: FoodItem[] = [
     water: 90.2,
     potassium: 195,
     sodium: 4.3,
-    calcium: 'not_measured',
+    calcium: "not_measured",
     magnesium: 17,
     iron: 1.4,
+    image: "vegetables/jinzhengu.jpg",
   },
   {
     id: "85",
@@ -1531,6 +1615,7 @@ export const foods: FoodItem[] = [
     calcium: 39,
     magnesium: 21,
     iron: 1.2,
+    image: "vegetables/dasuan.jpg",
   },
   {
     id: "86",
@@ -1549,6 +1634,7 @@ export const foods: FoodItem[] = [
     calcium: 264,
     magnesium: 105,
     iron: 54.9,
+    image: "vegetables/zicai.jpg",
   },
   {
     id: "87",
@@ -1567,6 +1653,7 @@ export const foods: FoodItem[] = [
     calcium: 36,
     magnesium: 54,
     iron: 4.1,
+    image: "vegetables/yiner.jpg",
   },
   {
     id: "88",
@@ -1585,6 +1672,7 @@ export const foods: FoodItem[] = [
     calcium: 4,
     magnesium: 124,
     iron: 9.3,
+    image: "vegetables/chashugu.jpg",
   },
   {
     id: "89",
@@ -1603,6 +1691,7 @@ export const foods: FoodItem[] = [
     calcium: 169,
     magnesium: 167,
     iron: 19.4,
+    image: "vegetables/koumo.jpg",
   },
   {
     id: "90",
@@ -1621,6 +1710,7 @@ export const foods: FoodItem[] = [
     calcium: 13,
     magnesium: 11,
     iron: 0.2,
+    image: "fruits/renshenguo.jpg",
   },
   {
     id: "91",
@@ -1639,6 +1729,7 @@ export const foods: FoodItem[] = [
     calcium: 14,
     magnesium: 10,
     iron: 1,
+    image: "fruits/yangmei.jpg",
   },
   {
     id: "92",
@@ -1657,6 +1748,7 @@ export const foods: FoodItem[] = [
     calcium: 17,
     magnesium: 10,
     iron: 1.1,
+    image: "fruits/pipa.jpg",
   },
   {
     id: "93",
@@ -1675,6 +1767,7 @@ export const foods: FoodItem[] = [
     calcium: 11,
     magnesium: 19,
     iron: 0.3,
+    image: "fruits/shanzhu.jpg",
   },
   {
     id: "94",
@@ -1693,6 +1786,7 @@ export const foods: FoodItem[] = [
     calcium: 8,
     magnesium: 10,
     iron: 0.6,
+    image: "fruits/lizi.jpg",
   },
   {
     id: "95",
@@ -1708,9 +1802,10 @@ export const foods: FoodItem[] = [
     water: 90.6,
     potassium: 138,
     sodium: 2.8,
-    calcium: 'not_detected',
+    calcium: "not_detected",
     magnesium: 14,
     iron: 0.2,
+    image: "fruits/mangguo.jpg",
   },
   {
     id: "96",
@@ -1729,6 +1824,7 @@ export const foods: FoodItem[] = [
     calcium: 17,
     magnesium: 9,
     iron: 0.2,
+    image: "fruits/mugua.jpg",
   },
   {
     id: "97",
@@ -1747,6 +1843,7 @@ export const foods: FoodItem[] = [
     calcium: 4,
     magnesium: 4,
     iron: 0.6,
+    image: "fruits/pingguo.jpg",
   },
   {
     id: "98",
@@ -1758,14 +1855,15 @@ export const foods: FoodItem[] = [
     protein: 0.5,
     phosphorus: 13,
     pProteinRatio: 26,
-    fat: 'not_detected',
+    fat: "not_detected",
     water: 91.2,
     potassium: 79,
     sodium: 4.2,
     calcium: 10,
     magnesium: 11,
     iron: 0.7,
-    estimated: ['energy'],
+    estimated: ["energy"],
+    image: "fruits/xigua.jpg",
   },
   {
     id: "99",
@@ -1784,6 +1882,7 @@ export const foods: FoodItem[] = [
     calcium: 5,
     magnesium: 8,
     iron: 0.4,
+    image: "fruits/putao.jpg",
   },
   {
     id: "100",
@@ -1802,6 +1901,7 @@ export const foods: FoodItem[] = [
     calcium: 9,
     magnesium: 8,
     iron: 0.5,
+    image: "fruits/li.jpg",
   },
   {
     id: "101",
@@ -1820,6 +1920,7 @@ export const foods: FoodItem[] = [
     calcium: 14,
     magnesium: 11,
     iron: 0.6,
+    image: "fruits/xing.jpg",
   },
   {
     id: "102",
@@ -1838,6 +1939,7 @@ export const foods: FoodItem[] = [
     calcium: 14,
     magnesium: 11,
     iron: 0.7,
+    image: "fruits/tiangua.jpg",
   },
   {
     id: "103",
@@ -1856,6 +1958,7 @@ export const foods: FoodItem[] = [
     calcium: 4,
     magnesium: 10,
     iron: 0.4,
+    image: "fruits/yangtao.jpg",
   },
   {
     id: "104",
@@ -1873,7 +1976,8 @@ export const foods: FoodItem[] = [
     sodium: 26.7,
     calcium: 4,
     magnesium: 19,
-    iron: 'not_detected',
+    iron: "not_detected",
+    image: "fruits/hamigua.jpg",
   },
   {
     id: "105",
@@ -1892,6 +1996,7 @@ export const foods: FoodItem[] = [
     calcium: 56,
     magnesium: 20,
     iron: 1,
+    image: "fruits/jinju.jpg",
   },
   {
     id: "106",
@@ -1910,6 +2015,7 @@ export const foods: FoodItem[] = [
     calcium: 6,
     magnesium: 7,
     iron: 0.8,
+    image: "fruits/tao.jpg",
   },
   {
     id: "107",
@@ -1928,6 +2034,7 @@ export const foods: FoodItem[] = [
     calcium: 5,
     magnesium: 6,
     iron: 0.1,
+    image: "fruits/sheguo.jpg",
   },
   {
     id: "108",
@@ -1946,6 +2053,7 @@ export const foods: FoodItem[] = [
     calcium: 20,
     magnesium: 14,
     iron: 0.4,
+    image: "fruits/cheng.jpg",
   },
   {
     id: "109",
@@ -1964,6 +2072,7 @@ export const foods: FoodItem[] = [
     calcium: 22,
     magnesium: 25,
     iron: 1.2,
+    image: "fruits/zao.jpg",
   },
   {
     id: "110",
@@ -1982,6 +2091,7 @@ export const foods: FoodItem[] = [
     calcium: 4,
     magnesium: 4,
     iron: 0.3,
+    image: "fruits/you.jpg",
   },
   {
     id: "111",
@@ -2000,6 +2110,7 @@ export const foods: FoodItem[] = [
     calcium: 2,
     magnesium: 12,
     iron: 0.4,
+    image: "fruits/lizhi.jpg",
   },
   {
     id: "112",
@@ -2014,10 +2125,11 @@ export const foods: FoodItem[] = [
     fat: 0.2,
     water: 88.5,
     potassium: 54,
-    sodium: 'not_measured',
+    sodium: "not_measured",
     calcium: 45,
     magnesium: 45,
     iron: 1.3,
+    image: "fruits/lugan.jpg",
   },
   {
     id: "113",
@@ -2036,6 +2148,7 @@ export const foods: FoodItem[] = [
     calcium: 27,
     magnesium: 12,
     iron: 1.2,
+    image: "fruits/zhonghuamihoutao.jpg",
   },
   {
     id: "114",
@@ -2054,6 +2167,7 @@ export const foods: FoodItem[] = [
     calcium: 11,
     magnesium: 12,
     iron: 0.4,
+    image: "fruits/yingtao.jpg",
   },
   {
     id: "115",
@@ -2072,6 +2186,7 @@ export const foods: FoodItem[] = [
     calcium: 18,
     magnesium: 12,
     iron: 1.8,
+    image: "fruits/caomei.jpg",
   },
   {
     id: "116",
@@ -2090,6 +2205,7 @@ export const foods: FoodItem[] = [
     calcium: 7,
     magnesium: 43,
     iron: 0.4,
+    image: "fruits/xiangjiao.jpg",
   },
   {
     id: "117",
@@ -2108,6 +2224,7 @@ export const foods: FoodItem[] = [
     calcium: 16,
     magnesium: 17,
     iron: 0.2,
+    image: "fruits/dongzao.jpg",
   },
   {
     id: "118",
@@ -2126,6 +2243,7 @@ export const foods: FoodItem[] = [
     calcium: 6,
     magnesium: 10,
     iron: 0.2,
+    image: "fruits/guiyuan.jpg",
   },
   {
     id: "119",
@@ -2144,6 +2262,7 @@ export const foods: FoodItem[] = [
     calcium: 7,
     magnesium: 30,
     iron: 0.3,
+    image: "fruits/huolongguo.jpg",
   },
   {
     id: "120",
@@ -2162,6 +2281,7 @@ export const foods: FoodItem[] = [
     calcium: 64,
     magnesium: 36,
     iron: 2.3,
+    image: "fruits/zao.jpg",
   },
   {
     id: "121",
@@ -2180,6 +2300,7 @@ export const foods: FoodItem[] = [
     calcium: 9,
     magnesium: 16,
     iron: 0.3,
+    image: "fruits/shiliu.jpg",
   },
   {
     id: "122",
@@ -2198,6 +2319,7 @@ export const foods: FoodItem[] = [
     calcium: 2,
     magnesium: 65,
     iron: 1.8,
+    image: "fruits/yezi.jpg",
   },
   {
     id: "123",
@@ -2216,6 +2338,7 @@ export const foods: FoodItem[] = [
     calcium: 52,
     magnesium: 45,
     iron: 9.1,
+    image: "fruits/putaogan.jpg",
   },
   {
     id: "124",
@@ -2234,6 +2357,7 @@ export const foods: FoodItem[] = [
     calcium: 18,
     magnesium: 28,
     iron: 0.9,
+    image: "beans/doufunao.jpg",
   },
   {
     id: "125",
@@ -2252,6 +2376,7 @@ export const foods: FoodItem[] = [
     calcium: 10,
     magnesium: 9,
     iron: 0.5,
+    image: "beans/doujiang.jpg",
   },
   {
     id: "126",
@@ -2270,6 +2395,7 @@ export const foods: FoodItem[] = [
     calcium: 17,
     magnesium: 24,
     iron: 0.8,
+    image: "beans/doufu.jpg",
   },
   {
     id: "127",
@@ -2288,6 +2414,7 @@ export const foods: FoodItem[] = [
     calcium: 116,
     magnesium: 36,
     iron: 1.5,
+    image: "beans/doufu.jpg",
   },
   {
     id: "128",
@@ -2306,6 +2433,7 @@ export const foods: FoodItem[] = [
     calcium: 138,
     magnesium: 63,
     iron: 2.5,
+    image: "beans/doufu.jpg",
   },
   {
     id: "129",
@@ -2324,6 +2452,7 @@ export const foods: FoodItem[] = [
     calcium: 135,
     magnesium: 70,
     iron: 3.5,
+    image: "beans/maodou.jpg",
   },
   {
     id: "130",
@@ -2342,6 +2471,7 @@ export const foods: FoodItem[] = [
     calcium: 299,
     magnesium: 88,
     iron: 5.7,
+    image: "beans/doufugan.jpg",
   },
   {
     id: "131",
@@ -2360,6 +2490,7 @@ export const foods: FoodItem[] = [
     calcium: 204,
     magnesium: 127,
     iron: 9.1,
+    image: "beans/doufusi.jpg",
   },
   {
     id: "132",
@@ -2378,6 +2509,7 @@ export const foods: FoodItem[] = [
     calcium: 147,
     magnesium: 72,
     iron: 5.2,
+    image: "beans/youdoufu.jpg",
   },
   {
     id: "133",
@@ -2396,6 +2528,7 @@ export const foods: FoodItem[] = [
     calcium: 97,
     magnesium: 118,
     iron: 4.9,
+    image: "beans/wandou.jpg",
   },
   {
     id: "134",
@@ -2414,6 +2547,7 @@ export const foods: FoodItem[] = [
     calcium: 74,
     magnesium: 138,
     iron: 7.4,
+    image: "beans/chixiaodou.jpg",
   },
   {
     id: "135",
@@ -2432,6 +2566,7 @@ export const foods: FoodItem[] = [
     calcium: 81,
     magnesium: 125,
     iron: 6.5,
+    image: "beans/lüdou.jpg",
   },
   {
     id: "136",
@@ -2450,6 +2585,7 @@ export const foods: FoodItem[] = [
     calcium: 31,
     magnesium: 57,
     iron: 8.2,
+    image: "beans/candou.jpg",
   },
   {
     id: "137",
@@ -2468,6 +2604,7 @@ export const foods: FoodItem[] = [
     calcium: 191,
     magnesium: 199,
     iron: 8.2,
+    image: "beans/huangdou.jpg",
   },
   {
     id: "138",
@@ -2486,6 +2623,7 @@ export const foods: FoodItem[] = [
     calcium: 224,
     magnesium: 243,
     iron: 7,
+    image: "beans/heidou.jpg",
   },
   {
     id: "139",
@@ -2504,6 +2642,7 @@ export const foods: FoodItem[] = [
     calcium: 9,
     magnesium: 15,
     iron: 1.6,
+    image: "protein/jidanbai.jpg",
   },
   {
     id: "140",
@@ -2522,6 +2661,7 @@ export const foods: FoodItem[] = [
     calcium: 285,
     magnesium: 149,
     iron: 13.2,
+    image: "protein/haishen.jpg",
   },
   {
     id: "141",
@@ -2540,6 +2680,7 @@ export const foods: FoodItem[] = [
     calcium: 33,
     magnesium: 5,
     iron: 1.1,
+    image: "protein/zhuti.jpg",
   },
   {
     id: "142",
@@ -2558,6 +2699,7 @@ export const foods: FoodItem[] = [
     calcium: 10,
     magnesium: 8,
     iron: 1,
+    image: "protein/zhudachang.jpg",
   },
   {
     id: "143",
@@ -2576,6 +2718,7 @@ export const foods: FoodItem[] = [
     calcium: 43,
     magnesium: 61,
     iron: 0.5,
+    image: "protein/youyu.jpg",
   },
   {
     id: "144",
@@ -2594,6 +2737,7 @@ export const foods: FoodItem[] = [
     calcium: 104,
     magnesium: 11,
     iron: 0.3,
+    image: "protein/niuru.jpg",
   },
   {
     id: "145",
@@ -2612,6 +2756,7 @@ export const foods: FoodItem[] = [
     calcium: 36,
     magnesium: 7,
     iron: 1.4,
+    image: "protein/jizhua.jpg",
   },
   {
     id: "146",
@@ -2630,6 +2775,7 @@ export const foods: FoodItem[] = [
     calcium: 118,
     magnesium: 12,
     iron: 0.4,
+    image: "protein/suannai.jpg",
   },
   {
     id: "147",
@@ -2648,6 +2794,7 @@ export const foods: FoodItem[] = [
     calcium: 3,
     magnesium: 20,
     iron: 2.2,
+    image: "protein/huotui.jpg",
   },
   {
     id: "148",
@@ -2666,6 +2813,7 @@ export const foods: FoodItem[] = [
     calcium: 6,
     magnesium: 14,
     iron: 2.2,
+    image: "protein/ya.jpg",
   },
   {
     id: "149",
@@ -2684,6 +2832,7 @@ export const foods: FoodItem[] = [
     calcium: 8,
     magnesium: 17,
     iron: 0.8,
+    image: "protein/zhudapai.jpg",
   },
   {
     id: "150",
@@ -2702,6 +2851,7 @@ export const foods: FoodItem[] = [
     calcium: 133,
     magnesium: 78,
     iron: 10.9,
+    image: "protein/geli.jpg",
   },
   {
     id: "151",
@@ -2720,6 +2870,7 @@ export const foods: FoodItem[] = [
     calcium: 35,
     magnesium: 50,
     iron: 0.8,
+    image: "protein/bayu.jpg",
   },
   {
     id: "152",
@@ -2738,6 +2889,7 @@ export const foods: FoodItem[] = [
     calcium: 56,
     magnesium: 10,
     iron: 2,
+    image: "protein/jidan.jpg",
   },
   {
     id: "153",
@@ -2756,6 +2908,7 @@ export const foods: FoodItem[] = [
     calcium: 4,
     magnesium: 18,
     iron: 3.8,
+    image: "protein/e.jpg",
   },
   {
     id: "154",
@@ -2774,6 +2927,7 @@ export const foods: FoodItem[] = [
     calcium: 6,
     magnesium: 20,
     iron: 2.3,
+    image: "protein/yangrou.jpg",
   },
   {
     id: "155",
@@ -2792,6 +2946,7 @@ export const foods: FoodItem[] = [
     calcium: 9,
     magnesium: 19,
     iron: 1.4,
+    image: "protein/ji.jpg",
   },
   {
     id: "156",
@@ -2810,6 +2965,7 @@ export const foods: FoodItem[] = [
     calcium: 8,
     magnesium: 17,
     iron: 1.3,
+    image: "protein/jichi.jpg",
   },
   {
     id: "157",
@@ -2828,6 +2984,7 @@ export const foods: FoodItem[] = [
     calcium: 12,
     magnesium: 36,
     iron: 0.9,
+    image: "protein/luofeiyu.jpg",
   },
   {
     id: "158",
@@ -2846,6 +3003,7 @@ export const foods: FoodItem[] = [
     calcium: 6,
     magnesium: 16,
     iron: 1.6,
+    image: "protein/zhurou.jpg",
   },
   {
     id: "159",
@@ -2864,6 +3022,7 @@ export const foods: FoodItem[] = [
     calcium: 13,
     magnesium: 14,
     iron: 2.8,
+    image: "protein/zhushe.jpg",
   },
   {
     id: "160",
@@ -2882,6 +3041,7 @@ export const foods: FoodItem[] = [
     calcium: 12,
     magnesium: 15,
     iron: 2,
+    image: "protein/turou.jpg",
   },
   {
     id: "161",
@@ -2900,6 +3060,7 @@ export const foods: FoodItem[] = [
     calcium: 28,
     magnesium: 31,
     iron: 0.7,
+    image: "protein/xianbei.jpg",
   },
   {
     id: "162",
@@ -2918,6 +3079,7 @@ export const foods: FoodItem[] = [
     calcium: 23,
     magnesium: 20,
     iron: 3.3,
+    image: "protein/niurou.jpg",
   },
   {
     id: "163",
@@ -2936,6 +3098,7 @@ export const foods: FoodItem[] = [
     calcium: 6,
     magnesium: 34,
     iron: 1.5,
+    image: "protein/jitui.jpg",
   },
   {
     id: "164",
@@ -2954,6 +3117,7 @@ export const foods: FoodItem[] = [
     calcium: 35,
     magnesium: 13,
     iron: 2.4,
+    image: "protein/kaoya.jpg",
   },
   {
     id: "165",
@@ -2972,6 +3136,7 @@ export const foods: FoodItem[] = [
     calcium: 2,
     magnesium: 7,
     iron: 4.3,
+    image: "protein/lürou.jpg",
   },
   {
     id: "166",
@@ -2990,6 +3155,7 @@ export const foods: FoodItem[] = [
     calcium: 126,
     magnesium: 23,
     iron: 2.9,
+    image: "protein/xie.jpg",
   },
   {
     id: "167",
@@ -3008,6 +3174,7 @@ export const foods: FoodItem[] = [
     calcium: 34,
     magnesium: 31,
     iron: 10,
+    image: "protein/niurougan.jpg",
   },
   {
     id: "168",
@@ -3026,6 +3193,7 @@ export const foods: FoodItem[] = [
     calcium: 325,
     magnesium: 60,
     iron: 4,
+    image: "protein/hexia.jpg",
   },
   {
     id: "169",
@@ -3044,6 +3212,7 @@ export const foods: FoodItem[] = [
     calcium: 6,
     magnesium: 25,
     iron: 3,
+    image: "protein/zhurou.jpg",
   },
   {
     id: "170",
@@ -3062,6 +3231,7 @@ export const foods: FoodItem[] = [
     calcium: 53,
     magnesium: 23,
     iron: 1.4,
+    image: "protein/lianyu.jpg",
   },
   {
     id: "171",
@@ -3080,6 +3250,7 @@ export const foods: FoodItem[] = [
     calcium: 28,
     magnesium: 43,
     iron: 1.2,
+    image: "protein/daiyu.jpg",
   },
   {
     id: "172",
@@ -3098,6 +3269,7 @@ export const foods: FoodItem[] = [
     calcium: 79,
     magnesium: 41,
     iron: 1.3,
+    image: "protein/jiyu.jpg",
   },
   {
     id: "173",
@@ -3116,6 +3288,7 @@ export const foods: FoodItem[] = [
     calcium: 146,
     magnesium: 46,
     iron: 3,
+    image: "protein/haixia.jpg",
   },
   {
     id: "174",
@@ -3134,6 +3307,7 @@ export const foods: FoodItem[] = [
     calcium: 38,
     magnesium: 31,
     iron: 0.8,
+    image: "protein/caoyu.jpg",
   },
   {
     id: "175",
@@ -3152,6 +3326,7 @@ export const foods: FoodItem[] = [
     calcium: 50,
     magnesium: 33,
     iron: 1,
+    image: "protein/liyu.jpg",
   },
   {
     id: "176",
@@ -3170,6 +3345,7 @@ export const foods: FoodItem[] = [
     calcium: 42,
     magnesium: 18,
     iron: 2.5,
+    image: "protein/huangshan.jpg",
   },
   {
     id: "177",
@@ -3188,6 +3364,7 @@ export const foods: FoodItem[] = [
     calcium: 3,
     magnesium: 28,
     iron: 0.6,
+    image: "protein/jixiongpurou.jpg",
   },
   {
     id: "178",
@@ -3206,6 +3383,7 @@ export const foods: FoodItem[] = [
     calcium: 8,
     magnesium: 28,
     iron: 2.6,
+    image: "protein/chashaorou.jpg",
   },
   {
     id: "179",
@@ -3224,6 +3402,7 @@ export const foods: FoodItem[] = [
     calcium: 62,
     magnesium: 13,
     iron: 2.9,
+    image: "protein/yadan.jpg",
   },
   {
     id: "180",
@@ -3242,6 +3421,7 @@ export const foods: FoodItem[] = [
     calcium: 62,
     magnesium: 43,
     iron: 1.5,
+    image: "protein/duixia.jpg",
   },
   {
     id: "181",
@@ -3260,6 +3440,7 @@ export const foods: FoodItem[] = [
     calcium: 42,
     magnesium: 84,
     iron: 0.5,
+    image: "protein/xueyu.jpg",
   },
   {
     id: "182",
@@ -3278,6 +3459,7 @@ export const foods: FoodItem[] = [
     calcium: 112,
     magnesium: 41,
     iron: 6.5,
+    image: "protein/jidanhuang.jpg",
   },
   {
     id: "183",
@@ -3296,6 +3478,7 @@ export const foods: FoodItem[] = [
     calcium: 138,
     magnesium: 37,
     iron: 2,
+    image: "protein/luyu.jpg",
   },
   {
     id: "184",
@@ -3314,6 +3497,7 @@ export const foods: FoodItem[] = [
     calcium: 22,
     magnesium: 35,
     iron: 7.5,
+    image: "protein/larou.jpg",
   },
   {
     id: "185",
@@ -3332,6 +3516,7 @@ export const foods: FoodItem[] = [
     calcium: 799,
     magnesium: 57,
     iron: 2.4,
+    image: "protein/nailao.jpg",
   },
   {
     id: "186",
@@ -3350,6 +3535,7 @@ export const foods: FoodItem[] = [
     calcium: 157,
     magnesium: 169,
     iron: 12.5,
+    image: "protein/dancai.jpg",
   },
   {
     id: "187",
@@ -3368,6 +3554,7 @@ export const foods: FoodItem[] = [
     calcium: 77,
     magnesium: 106,
     iron: 5.6,
+    image: "protein/ganbei.jpg",
   },
   {
     id: "188",
@@ -3386,6 +3573,7 @@ export const foods: FoodItem[] = [
     calcium: 555,
     magnesium: 236,
     iron: 11,
+    image: "protein/xiami.jpg",
   },
   {
     id: "189",
@@ -3394,17 +3582,18 @@ export const foods: FoodItem[] = [
     pinyin: "gan lan you",
     pinyinCompact: "ganlanyou",
     energy: 899,
-    protein: 'not_detected',
-    phosphorus: 'not_detected',
-    pProteinRatio: 'not_measured',
+    protein: "not_detected",
+    phosphorus: "not_detected",
+    pProteinRatio: "not_measured",
     fat: 99.9,
-    water: 'not_detected',
-    potassium: 'not_measured',
-    sodium: 'not_detected',
-    calcium: 'not_detected',
-    magnesium: 'not_detected',
+    water: "not_detected",
+    potassium: "not_measured",
+    sodium: "not_detected",
+    calcium: "not_detected",
+    magnesium: "not_detected",
     iron: 0.4,
-    estimated: ['energy'],
+    estimated: ["energy"],
+    image: "nuts/ganlanyou.jpg",
   },
   {
     id: "190",
@@ -3413,7 +3602,7 @@ export const foods: FoodItem[] = [
     pinyin: "se la you",
     pinyinCompact: "selayou",
     energy: 898,
-    protein: 'not_detected',
+    protein: "not_detected",
     phosphorus: 1,
     pProteinRatio: 1,
     fat: 99.8,
@@ -3423,7 +3612,8 @@ export const foods: FoodItem[] = [
     calcium: 18,
     magnesium: 1,
     iron: 1.7,
-    estimated: ['energy'],
+    estimated: ["energy"],
+    image: "nuts/selayou.jpg",
   },
   {
     id: "191",
@@ -3432,7 +3622,7 @@ export const foods: FoodItem[] = [
     pinyin: "hua sheng you",
     pinyinCompact: "huashengyou",
     energy: 899,
-    protein: 'not_detected',
+    protein: "not_detected",
     phosphorus: 15,
     pProteinRatio: 15,
     fat: 99.9,
@@ -3442,7 +3632,8 @@ export const foods: FoodItem[] = [
     calcium: 12,
     magnesium: 2,
     iron: 2.9,
-    estimated: ['energy'],
+    estimated: ["energy"],
+    image: "nuts/huashengyou.jpg",
   },
   {
     id: "192",
@@ -3459,8 +3650,9 @@ export const foods: FoodItem[] = [
     potassium: 17,
     sodium: 17.5,
     calcium: 54,
-    magnesium: 'not_detected',
+    magnesium: "not_detected",
     iron: 0.2,
+    image: "nuts/baiguo.jpg",
   },
   {
     id: "193",
@@ -3474,11 +3666,12 @@ export const foods: FoodItem[] = [
     pProteinRatio: 19,
     fat: 1.5,
     water: 46.6,
-    potassium: 'not_measured',
-    sodium: 'not_measured',
+    potassium: "not_measured",
+    sodium: "not_measured",
     calcium: 15,
-    magnesium: 'not_measured',
+    magnesium: "not_measured",
     iron: 1.7,
+    image: "nuts/lizi.jpg",
   },
   {
     id: "194",
@@ -3492,11 +3685,12 @@ export const foods: FoodItem[] = [
     pProteinRatio: 7.9,
     fat: 51,
     water: 2.1,
-    potassium: 'not_measured',
-    sodium: 'not_measured',
+    potassium: "not_measured",
+    sodium: "not_measured",
     calcium: 141,
-    magnesium: 'not_measured',
+    magnesium: "not_measured",
     iron: 3.9,
+    image: "nuts/xingren.jpg",
   },
   {
     id: "195",
@@ -3515,6 +3709,7 @@ export const foods: FoodItem[] = [
     calcium: 133,
     magnesium: 5,
     iron: 5.4,
+    image: "nuts/shanhetao.jpg",
   },
   {
     id: "196",
@@ -3533,6 +3728,7 @@ export const foods: FoodItem[] = [
     calcium: 161,
     magnesium: 186,
     iron: 5.2,
+    image: "nuts/songzi.jpg",
   },
   {
     id: "197",
@@ -3551,6 +3747,7 @@ export const foods: FoodItem[] = [
     calcium: 39,
     magnesium: 178,
     iron: 2.1,
+    image: "nuts/huashengren.jpg",
   },
   {
     id: "198",
@@ -3569,6 +3766,7 @@ export const foods: FoodItem[] = [
     calcium: 47,
     magnesium: 171,
     iron: 1.5,
+    image: "nuts/huasheng.jpg",
   },
   {
     id: "199",
@@ -3587,6 +3785,7 @@ export const foods: FoodItem[] = [
     calcium: 26,
     magnesium: 153,
     iron: 4.8,
+    image: "nuts/yaoguo.jpg",
   },
   {
     id: "200",
@@ -3605,6 +3804,7 @@ export const foods: FoodItem[] = [
     calcium: 815,
     magnesium: 502,
     iron: 5.1,
+    image: "nuts/zhenzi.jpg",
   },
   {
     id: "201",
@@ -3623,6 +3823,7 @@ export const foods: FoodItem[] = [
     calcium: 108,
     magnesium: 118,
     iron: 4.4,
+    image: "nuts/kaixinguo.jpg",
   },
   {
     id: "202",
@@ -3641,6 +3842,7 @@ export const foods: FoodItem[] = [
     calcium: 780,
     magnesium: 290,
     iron: 22.7,
+    image: "nuts/zhima.jpg",
   },
   {
     id: "203",
@@ -3659,6 +3861,7 @@ export const foods: FoodItem[] = [
     calcium: 72,
     magnesium: 267,
     iron: 6.1,
+    image: "nuts/kuihuazi.jpg",
   },
   {
     id: "204",
@@ -3677,6 +3880,7 @@ export const foods: FoodItem[] = [
     calcium: 28,
     magnesium: 448,
     iron: 8.2,
+    image: "nuts/xiguazi.jpg",
   },
   {
     id: "205",
@@ -3695,6 +3899,7 @@ export const foods: FoodItem[] = [
     calcium: 9,
     magnesium: 3,
     iron: 1.3,
+    image: "processed/liangfen.jpg",
   },
   {
     id: "206",
@@ -3713,6 +3918,7 @@ export const foods: FoodItem[] = [
     calcium: 4,
     magnesium: 2,
     iron: 1,
+    image: "processed/fengmi.jpg",
   },
   {
     id: "207",
@@ -3724,13 +3930,14 @@ export const foods: FoodItem[] = [
     protein: 0.1,
     phosphorus: 3,
     pProteinRatio: 30,
-    fat: 'not_measured',
-    water: 'not_measured',
+    fat: "not_measured",
+    water: "not_measured",
     potassium: 33,
     sodium: 1.6,
     calcium: 21,
     magnesium: 5,
     iron: 0.6,
+    image: "processed/putaojiu.jpg",
   },
   {
     id: "208",
@@ -3742,14 +3949,15 @@ export const foods: FoodItem[] = [
     protein: 0.2,
     phosphorus: 9,
     pProteinRatio: 45,
-    fat: 'not_detected',
+    fat: "not_detected",
     water: 6.4,
     potassium: 35,
     sodium: 10.8,
     calcium: 8,
     magnesium: 2,
     iron: 17.9,
-    estimated: ['energy'],
+    estimated: ["energy"],
+    image: "processed/oufen.jpg",
   },
   {
     id: "209",
@@ -3763,11 +3971,12 @@ export const foods: FoodItem[] = [
     pProteinRatio: 16.7,
     fat: 0.1,
     water: 90.2,
-    potassium: 'not_measured',
-    sodium: 'not_measured',
+    potassium: "not_measured",
+    sodium: "not_measured",
     calcium: 3,
     magnesium: 3,
     iron: 0.1,
+    image: "processed/xingrenyezhiyinliao.jpg",
   },
   {
     id: "210",
@@ -3779,13 +3988,14 @@ export const foods: FoodItem[] = [
     protein: 0.4,
     phosphorus: 12,
     pProteinRatio: 30,
-    fat: 'not_measured',
-    water: 'not_measured',
+    fat: "not_measured",
+    water: "not_measured",
     potassium: 47,
     sodium: 11.4,
     calcium: 13,
     magnesium: 6,
     iron: 0.4,
+    image: "processed/pijiu.jpg",
   },
   {
     id: "211",
@@ -3804,6 +4014,7 @@ export const foods: FoodItem[] = [
     calcium: 11,
     magnesium: 11,
     iron: 0.1,
+    image: "processed/chengzhiyinliao.jpg",
   },
   {
     id: "212",
@@ -3822,6 +4033,7 @@ export const foods: FoodItem[] = [
     calcium: 3,
     magnesium: 1,
     iron: 0,
+    image: "processed/kekoukele.jpg",
   },
   {
     id: "213",
@@ -3840,6 +4052,7 @@ export const foods: FoodItem[] = [
     calcium: 31,
     magnesium: 11,
     iron: 6.4,
+    image: "processed/fensi.jpg",
   },
   {
     id: "214",
@@ -3858,6 +4071,7 @@ export const foods: FoodItem[] = [
     calcium: 2,
     magnesium: 6,
     iron: 1.4,
+    image: "processed/babaozhou.jpg",
   },
   {
     id: "215",
@@ -3876,6 +4090,7 @@ export const foods: FoodItem[] = [
     calcium: 35,
     magnesium: 11,
     iron: 5.2,
+    image: "processed/fentiao.jpg",
   },
   {
     id: "216",
@@ -3894,6 +4109,7 @@ export const foods: FoodItem[] = [
     calcium: 4,
     magnesium: 3,
     iron: 2.7,
+    image: "processed/niangpi.jpg",
   },
   {
     id: "217",
@@ -3912,6 +4128,7 @@ export const foods: FoodItem[] = [
     calcium: 13,
     magnesium: 8,
     iron: 0.5,
+    image: "processed/qiandaoshalajiang.jpg",
   },
   {
     id: "218",
@@ -3930,6 +4147,7 @@ export const foods: FoodItem[] = [
     calcium: 16,
     magnesium: 29,
     iron: 2.7,
+    image: "processed/shengchou.jpg",
   },
   {
     id: "219",
@@ -3948,6 +4166,7 @@ export const foods: FoodItem[] = [
     calcium: 69,
     magnesium: 19,
     iron: 1.6,
+    image: "processed/heizhimatangyuan.jpg",
   },
   {
     id: "220",
@@ -3966,6 +4185,7 @@ export const foods: FoodItem[] = [
     calcium: 29,
     magnesium: 26,
     iron: 3.6,
+    image: "processed/tianmianjiang.jpg",
   },
   {
     id: "221",
@@ -3984,6 +4204,7 @@ export const foods: FoodItem[] = [
     calcium: 73,
     magnesium: 50,
     iron: 1.9,
+    image: "processed/binggan.jpg",
   },
   {
     id: "222",
@@ -4002,6 +4223,7 @@ export const foods: FoodItem[] = [
     calcium: 11,
     magnesium: 34,
     iron: 1.2,
+    image: "processed/malingshupian.jpg",
   },
   {
     id: "223",
@@ -4020,6 +4242,7 @@ export const foods: FoodItem[] = [
     calcium: 67,
     magnesium: 21,
     iron: 7.2,
+    image: "processed/huashengjiang.jpg",
   },
   {
     id: "224",
@@ -4038,6 +4261,7 @@ export const foods: FoodItem[] = [
     calcium: 22,
     magnesium: 14,
     iron: 0.7,
+    image: "processed/jirouhanbao.jpg",
   },
   {
     id: "225",
@@ -4056,6 +4280,7 @@ export const foods: FoodItem[] = [
     calcium: 24,
     magnesium: 13,
     iron: 2.4,
+    image: "processed/regou.jpg",
   },
   {
     id: "226",
@@ -4074,6 +4299,7 @@ export const foods: FoodItem[] = [
     calcium: 49,
     magnesium: 31,
     iron: 2,
+    image: "processed/mianbao.jpg",
   },
   {
     id: "227",
@@ -4092,6 +4318,7 @@ export const foods: FoodItem[] = [
     calcium: 111,
     magnesium: 56,
     iron: 1.7,
+    image: "processed/qiaokeli.jpg",
   },
   {
     id: "228",
@@ -4110,6 +4337,7 @@ export const foods: FoodItem[] = [
     calcium: 28,
     magnesium: 37,
     iron: 1.1,
+    image: "processed/fanqiejiang.jpg",
   },
   {
     id: "229",
@@ -4128,6 +4356,7 @@ export const foods: FoodItem[] = [
     calcium: 24,
     magnesium: 87,
     iron: 7.3,
+    image: "processed/lüdougao.jpg",
   },
   {
     id: "230",
@@ -4146,6 +4375,7 @@ export const foods: FoodItem[] = [
     calcium: 125,
     magnesium: 132,
     iron: 13.9,
+    image: "processed/chencu.jpg",
   },
   {
     id: "231",
@@ -4164,6 +4394,7 @@ export const foods: FoodItem[] = [
     calcium: 39,
     magnesium: 24,
     iron: 2.5,
+    image: "processed/dangao.jpg",
   },
   {
     id: "232",
@@ -4182,6 +4413,7 @@ export const foods: FoodItem[] = [
     calcium: 87,
     magnesium: 78,
     iron: 11.5,
+    image: "processed/furu.jpg",
   },
   {
     id: "233",
@@ -4200,6 +4432,7 @@ export const foods: FoodItem[] = [
     calcium: 27,
     magnesium: 44,
     iron: 6.1,
+    image: "processed/laochou.jpg",
   },
   {
     id: "234",
@@ -4218,6 +4451,7 @@ export const foods: FoodItem[] = [
     calcium: 9,
     magnesium: 22,
     iron: 4.5,
+    image: "processed/huotuichang.jpg",
   },
   {
     id: "235",
@@ -4236,6 +4470,7 @@ export const foods: FoodItem[] = [
     calcium: 325,
     magnesium: 196,
     iron: 14.4,
+    image: "processed/lücha.jpg",
   },
   {
     id: "236",
@@ -4252,8 +4487,9 @@ export const foods: FoodItem[] = [
     potassium: 129,
     sodium: 551,
     calcium: 154,
-    magnesium: 'not_measured',
+    magnesium: "not_measured",
     iron: 2,
+    image: "processed/sanmingzhi.jpg",
   },
   {
     id: "237",
@@ -4272,6 +4508,7 @@ export const foods: FoodItem[] = [
     calcium: 186,
     magnesium: 177,
     iron: 7,
+    image: "processed/yanmaipian.jpg",
   },
   {
     id: "238",
@@ -4290,6 +4527,7 @@ export const foods: FoodItem[] = [
     calcium: 141,
     magnesium: 327,
     iron: 4.4,
+    image: "processed/kafeifen.jpg",
   },
   {
     id: "239",
@@ -4308,6 +4546,7 @@ export const foods: FoodItem[] = [
     calcium: 454,
     magnesium: 192,
     iron: 17.8,
+    image: "processed/huacha.jpg",
   },
   {
     id: "240",
@@ -4326,6 +4565,7 @@ export const foods: FoodItem[] = [
     calcium: 378,
     magnesium: 183,
     iron: 28.1,
+    image: "processed/hongcha.jpg",
   },
   {
     id: "241",
@@ -4344,6 +4584,7 @@ export const foods: FoodItem[] = [
     calcium: 540,
     magnesium: 220,
     iron: 28.5,
+    image: "processed/kalifen.jpg",
   },
   {
     id: "242",
@@ -4362,5 +4603,6 @@ export const foods: FoodItem[] = [
     calcium: 1170,
     magnesium: 238,
     iron: 50.3,
-  }
+    image: "processed/zhimajiang.jpg",
+  },
 ];

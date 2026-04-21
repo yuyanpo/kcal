@@ -1,7 +1,8 @@
 import { Ionicons } from "@expo/vector-icons";
 import { useRouter } from "expo-router";
-import { useCallback } from "react";
+import { useCallback, useState } from "react";
 import {
+  Image,
   Pressable,
   ScrollView,
   StyleSheet,
@@ -13,7 +14,10 @@ import { useSafeAreaInsets } from "react-native-safe-area-context";
 import { useIsDark } from "../../context/ThemeContext";
 
 import { foods } from "../../data/foods";
-import { CATEGORIES, isNumber } from "../../data/types";
+import { getFoodImageUrl } from "../../data/imageUtils";
+import { CATEGORIES, FoodItem, isNumber } from "../../data/types";
+
+const noImage = require("../../assets/images/no-image.png");
 
 // 分类对应的图标和颜色
 const CATEGORY_META: Record<
@@ -246,13 +250,7 @@ function SectionHeader({
 }
 
 interface RankCardProps {
-  item: ReturnType<
-    (typeof foods)[0]["category"] extends string
-      ? () => (typeof foods)[0]
-      : never
-  > extends never
-    ? (typeof foods)[0]
-    : (typeof foods)[0];
+  item: FoodItem;
   onPress: () => void;
   valueLabel: string;
   valueSub: string;
@@ -272,15 +270,30 @@ function RankCard({
   textPrimary,
   textSecondary,
   accentColor,
+  isDark,
 }: RankCardProps) {
-  const meta = CATEGORY_META[item.category] ?? { icon: "🍽️" };
+  const [imgError, setImgError] = useState(false);
+  const imageUrl = getFoodImageUrl(item.image);
+  const showRemote = imageUrl && !imgError;
+
   return (
     <TouchableOpacity
       style={[styles.rankCard, { backgroundColor: cardBg }]}
       onPress={onPress}
       activeOpacity={0.75}
     >
-      <Text style={styles.rankIcon}>{meta.icon}</Text>
+      {/* 食物图片 */}
+      <View
+        className={`w-full rounded-xl overflow-hidden mb-1 ${isDark ? "bg-[#2a2a2a]" : "bg-[#f0f0f0]"}`}
+        style={{ height: 90 }}
+      >
+        <Image
+          source={showRemote ? { uri: imageUrl } : noImage}
+          style={{ width: "100%", height: "100%" }}
+          onError={() => setImgError(true)}
+        />
+      </View>
+
       <Text style={[styles.rankName, { color: textPrimary }]} numberOfLines={2}>
         {item.name}
       </Text>
@@ -378,9 +391,9 @@ const styles = StyleSheet.create({
   },
 
   rankCard: {
-    width: 120,
+    width: 130,
     borderRadius: 14,
-    padding: 14,
+    padding: 10,
     gap: 4,
     shadowColor: "#000",
     shadowOffset: { width: 0, height: 1 },
@@ -388,8 +401,7 @@ const styles = StyleSheet.create({
     shadowRadius: 4,
     elevation: 2,
   },
-  rankIcon: { fontSize: 24, marginBottom: 2 },
   rankName: { fontSize: 13, fontWeight: "600", lineHeight: 18 },
-  rankValue: { fontSize: 15, fontWeight: "700", marginTop: 4 },
+  rankValue: { fontSize: 14, fontWeight: "700", marginTop: 2 },
   rankSub: { fontSize: 11 },
 });

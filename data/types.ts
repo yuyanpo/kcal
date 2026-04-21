@@ -4,7 +4,7 @@
  * - 'not_detected'  : 未检出 / 痕量（原始数据为 tr 或 ...）
  * - 'estimated'     : 估计值（原始数据带 * 后缀）
  */
-export type NutrientSpecial = 'not_measured' | 'not_detected' | 'estimated';
+export type NutrientSpecial = "not_measured" | "not_detected" | "estimated";
 
 export interface NutrientValue {
   value: number;
@@ -43,30 +43,34 @@ export interface FoodItem {
   magnesium: NutrientField;
   iron: NutrientField;
   /** 哪些字段为估计值（带 * 的字段名列表） */
-  estimated?: (keyof Omit<FoodItem, 'id' | 'category' | 'name' | 'estimated'>)[];
+  estimated?: (keyof Omit<
+    FoodItem,
+    "id" | "category" | "name" | "estimated"
+  >)[];
+  image?: string;
 }
 
 export const CATEGORIES = [
-  '全部',
-  '谷薯类',
-  '蔬菜类',
-  '水果类',
-  '豆类',
-  '肉蛋奶类',
-  '坚果油脂类',
-  '加工食品及饮料类',
+  "全部",
+  "谷薯类", // grains
+  "蔬菜类", // vegetables
+  "水果类", // fruits
+  "豆类", // beans
+  "肉蛋奶类", // protein
+  "坚果油脂类", // nuts
+  "加工食品及饮料类", // processed
 ] as const;
 
 export type Category = (typeof CATEGORIES)[number];
 
 /** 判断字段是否有有效数值 */
 export function isNumber(v: NutrientField): v is number {
-  return typeof v === 'number';
+  return typeof v === "number";
 }
 
 /** 格式化营养素字段为显示字符串 */
 export function formatNutrient(v: NutrientField, decimals = 1): string {
-  if (v === 'not_measured') return '未检测';
-  if (v === 'not_detected') return '未检出';
-  return Number(v).toFixed(decimals).replace(/\.0$/, '');
+  if (v === "not_measured") return "未检测";
+  if (v === "not_detected") return "未检出";
+  return Number(v).toFixed(decimals).replace(/\.0$/, "");
 }
