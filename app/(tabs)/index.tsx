@@ -1,6 +1,6 @@
 import { Ionicons } from "@expo/vector-icons";
 import { useRouter } from "expo-router";
-import { useCallback, useState } from "react";
+import { useCallback, useMemo, useState } from "react";
 import {
   Image,
   Pressable,
@@ -15,59 +15,88 @@ import { useIsDark } from "../../context/ThemeContext";
 
 import { foods } from "../../data/foods";
 import { getFoodImageUrl } from "../../data/imageUtils";
-import { CATEGORIES, FoodItem, isNumber } from "../../data/types";
+import {
+  CATEGORIES,
+  FoodItem,
+  formatNutrient,
+  isNumber,
+} from "../../data/types";
 
 const noImage = require("../../assets/images/no-image.png");
 
-// 分类对应的图标和颜色
+type IoniconName = keyof typeof Ionicons.glyphMap;
+
 const CATEGORY_META: Record<
   string,
-  { icon: string; color: string; bg: string }
+  { icon: IoniconName; tone: string; hint: string }
 > = {
-  谷薯类: { icon: "🌾", color: "#B07D3A", bg: "#FFF4E0" },
-  蔬菜类: { icon: "🥬", color: "#3A9A5C", bg: "#E8F8EE" },
-  水果类: { icon: "🍎", color: "#E05A5A", bg: "#FDEAEA" },
-  豆类: { icon: "🫘", color: "#7B5EA7", bg: "#F2ECFB" },
-  肉蛋奶类: { icon: "🥩", color: "#D4603A", bg: "#FDF0EB" },
-  坚果油脂类: { icon: "🥜", color: "#A07830", bg: "#FBF4E6" },
-  加工食品及饮料类: { icon: "🍰", color: "#3A7DB4", bg: "#E8F3FC" },
+  谷薯类: { icon: "restaurant-outline", tone: "#B7791F", hint: "主食能量" },
+  蔬菜类: { icon: "leaf-outline", tone: "#2F855A", hint: "轻食优选" },
+  水果类: { icon: "nutrition-outline", tone: "#E05252", hint: "果糖水分" },
+  豆类: { icon: "ellipse-outline", tone: "#7C5AA8", hint: "植物蛋白" },
+  肉蛋奶类: { icon: "egg-outline", tone: "#D95F32", hint: "补蛋白" },
+  坚果油脂类: { icon: "flame-outline", tone: "#A66A2C", hint: "高能量" },
+  加工食品及饮料类: { icon: "cafe-outline", tone: "#3478B8", hint: "饮品零食" },
 };
 
-// 能量最低的 6 种（能量有数值的食物）
-const lowestEnergy = [...foods]
-  .filter((f) => isNumber(f.energy))
+const categoryCounts = foods.reduce<Record<string, number>>((acc, food) => {
+  acc[food.category] = (acc[food.category] ?? 0) + 1;
+  return acc;
+}, {});
+
+const lowEnergyFoods = [...foods]
+  .filter((food) => isNumber(food.energy))
   .sort((a, b) => (a.energy as number) - (b.energy as number))
-  .slice(0, 6);
+  .slice(0, 8);
 
-// 脂肪最高的 6 种
-const highestFat = [...foods]
-  .filter((f) => isNumber(f.fat))
-  .sort((a, b) => (b.fat as number) - (a.fat as number))
-  .slice(0, 6);
-
-// 推荐：蛋白质高且热量适中的食物（蛋白质 > 15g，热量 < 200kcal）
-const recommended = foods
+const proteinFoods = [...foods]
   .filter(
-    (f) =>
-      isNumber(f.protein) &&
-      isNumber(f.energy) &&
-      (f.protein as number) > 15 &&
-      (f.energy as number) < 200,
+    (food) =>
+      isNumber(food.protein) &&
+      isNumber(food.energy) &&
+      (food.protein as number) >= 15 &&
+      (food.energy as number) <= 220,
   )
-  .slice(0, 6);
+  .sort((a, b) => (b.protein as number) - (a.protein as number))
+  .slice(0, 8);
+
+const highEnergyFoods = [...foods]
+  .filter((food) => isNumber(food.energy))
+  .sort((a, b) => (b.energy as number) - (a.energy as number))
+  .slice(0, 8);
+
+const comparisonPairs = [
+  ["6", "10"],
+  ["97", "116"],
+  ["152", "125"],
+];
 
 export default function HomeScreen() {
   const router = useRouter();
   const isDark = useIsDark();
   const insets = useSafeAreaInsets();
 
+  const colors = useMemo(
+    () => ({
+      bg: isDark ? "#111111" : "#F6F6F3",
+      surface: isDark ? "#1E1E1E" : "#FFFFFF",
+      elevated: isDark ? "#252525" : "#FFF8F4",
+      border: isDark ? "#2A2A2A" : "#ECE7E1",
+      text: isDark ? "#F0F0F0" : "#161616",
+      muted: isDark ? "#8B8B8B" : "#737373",
+      faint: isDark ? "#666666" : "#A0A0A0",
+      input: isDark ? "#2A2A2A" : "#F1F1EF",
+    }),
+    [isDark],
+  );
+
   const goSearch = useCallback(
     (category?: string) => {
-      if (category) {
-        router.push(`/search?category=${encodeURIComponent(category)}`);
-      } else {
-        router.push("/search");
-      }
+      router.push(
+        category
+          ? `/search?category=${encodeURIComponent(category)}`
+          : "/search",
+      );
     },
     [router],
   );
@@ -79,213 +108,363 @@ export default function HomeScreen() {
     [router],
   );
 
-  const bg = isDark ? "#111" : "#f5f5f7";
-  const cardBg = isDark ? "#1e1e1e" : "#fff";
-  const textPrimary = isDark ? "#f0f0f0" : "#111";
-  const textSecondary = isDark ? "#888" : "#888";
+  const pairs = useMemo(
+    () =>
+      comparisonPairs
+        .map(([leftId, rightId]) => ({
+          left: foods.find((food) => food.id === leftId),
+          right: foods.find((food) => food.id === rightId),
+        }))
+        .filter((pair): pair is { left: FoodItem; right: FoodItem } =>
+          Boolean(pair.left && pair.right),
+        ),
+    [],
+  );
 
   return (
     <ScrollView
-      style={[styles.scroll, { backgroundColor: bg }]}
-      contentContainerStyle={{ paddingBottom: 32 }}
+      className={isDark ? "bg-bg-dark" : "bg-bg"}
+      style={{ backgroundColor: colors.bg }}
+      contentContainerStyle={{ paddingBottom: 34 }}
       showsVerticalScrollIndicator={false}
     >
-      {/* 顶部标题 */}
-      <View style={[styles.header, { paddingTop: insets.top + 12 }]}>
-        <View>
-          <Text style={[styles.appTitle, { color: "#FF6B35" }]}>卡路里</Text>
-          <Text style={[styles.appSubtitle, { color: textSecondary }]}>
-            每一口，都心中有数
-          </Text>
+      <View className="px-5 pb-3" style={{ paddingTop: insets.top + 14 }}>
+        <View className="flex-row items-center justify-between">
+          <View>
+            <Text className="text-[28px] font-extrabold text-primary">
+              卡路里
+            </Text>
+            <Text className="mt-1 text-[13px]" style={{ color: colors.muted }}>
+              查食物、看营养，吃之前心里有数
+            </Text>
+          </View>
+          <View
+            className="h-11 w-11 items-center justify-center rounded-full"
+            style={{ backgroundColor: colors.elevated }}
+          >
+            <Ionicons name="sparkles-outline" size={21} color="#FF6B35" />
+          </View>
         </View>
       </View>
 
-      {/* 搜索入口 */}
-      <Pressable
-        style={[styles.searchBar, { backgroundColor: cardBg }]}
-        onPress={() => goSearch()}
-      >
-        <Ionicons name="search" size={18} color="#bbb" />
-        <Text style={styles.searchPlaceholder}>搜索食物名称、拼音…</Text>
-      </Pressable>
-
-      {/* 分类 */}
-      <SectionHeader title="分类" textColor={textPrimary} />
-      <View style={styles.categoryGrid}>
-        {CATEGORIES.filter((c) => c !== "全部").map((cat) => {
-          const meta = CATEGORY_META[cat] ?? {
-            icon: "🍽️",
-            color: "#666",
-            bg: "#f0f0f0",
-          };
-          return (
-            <TouchableOpacity
-              key={cat}
-              style={[
-                styles.categoryCard,
-                { backgroundColor: isDark ? "#1e1e1e" : meta.bg },
-              ]}
-              onPress={() => goSearch(cat)}
-              activeOpacity={0.75}
+      <View className="px-4">
+        <Pressable
+          className="h-[58px] flex-row items-center rounded-2xl px-4"
+          style={[styles.softShadow, { backgroundColor: colors.surface }]}
+          onPress={() => goSearch()}
+        >
+          <View
+            className="mr-3 h-9 w-9 items-center justify-center rounded-full"
+            style={{ backgroundColor: colors.input }}
+          >
+            <Ionicons name="search" size={18} color="#FF6B35" />
+          </View>
+          <View className="flex-1">
+            <Text
+              className="text-[16px] font-semibold"
+              style={{ color: colors.text }}
             >
-              <Text style={styles.categoryIcon}>{meta.icon}</Text>
-              <Text
-                style={[
-                  styles.categoryName,
-                  { color: isDark ? "#ddd" : meta.color },
-                ]}
-                numberOfLines={2}
-              >
-                {cat}
-              </Text>
-            </TouchableOpacity>
-          );
-        })}
+              搜索食物名称或拼音
+            </Text>
+            <Text
+              className="mt-0.5 text-[12px]"
+              style={{ color: colors.faint }}
+            >
+              例如：鸡蛋、jidan、苹果
+            </Text>
+          </View>
+          <Ionicons name="chevron-forward" size={18} color={colors.faint} />
+        </Pressable>
       </View>
 
-      {/* 能量最低排行 */}
-      <SectionHeader
-        title="低能量食物"
-        subtitle="kcal 最低前 6 名"
-        textColor={textPrimary}
-      />
-      <ScrollView
-        horizontal
-        showsHorizontalScrollIndicator={false}
-        style={styles.hScroll}
-        contentContainerStyle={styles.hScrollContent}
-      >
-        {lowestEnergy.map((item) => (
-          <RankCard
-            key={item.id}
-            item={item}
-            onPress={() => goFood(item.id)}
-            valueLabel={`${item.energy} kcal`}
-            valueSub="/100g"
-            cardBg={cardBg}
-            textPrimary={textPrimary}
-            textSecondary={textSecondary}
-            accentColor="#4CAF50"
-            isDark={isDark}
-          />
-        ))}
-      </ScrollView>
+      <View className="mt-4 flex-row gap-2 px-4">
+        <StatPill value={foods.length} label="食物条目" colors={colors} />
+        <StatPill
+          value={CATEGORIES.length - 1}
+          label="常用分类"
+          colors={colors}
+        />
+        <StatPill value="100g" label="统一口径" colors={colors} />
+      </View>
 
-      {/* 推荐食物 */}
       <SectionHeader
-        title="营养推荐"
-        subtitle="高蛋白 · 低热量"
-        textColor={textPrimary}
+        title="按场景找"
+        subtitle="先选大类，再精确搜索"
+        colors={colors}
       />
-      <ScrollView
-        horizontal
-        showsHorizontalScrollIndicator={false}
-        style={styles.hScroll}
-        contentContainerStyle={styles.hScrollContent}
-      >
-        {recommended.map((item) => (
-          <RankCard
-            key={item.id}
-            item={item}
-            onPress={() => goFood(item.id)}
-            valueLabel={`蛋白 ${item.protein}g`}
-            valueSub={`${item.energy} kcal`}
-            cardBg={cardBg}
-            textPrimary={textPrimary}
-            textSecondary={textSecondary}
-            accentColor="#FF6B35"
-            isDark={isDark}
-          />
-        ))}
-      </ScrollView>
+      <View className="flex-row flex-wrap gap-2 px-4">
+        {CATEGORIES.filter((category) => category !== "全部").map(
+          (category) => {
+            const meta = CATEGORY_META[category];
+            return (
+              <CategoryTile
+                key={category}
+                category={category}
+                count={categoryCounts[category] ?? 0}
+                icon={meta.icon}
+                tone={meta.tone}
+                hint={meta.hint}
+                colors={colors}
+                onPress={() => goSearch(category)}
+              />
+            );
+          },
+        )}
+      </View>
 
-      {/* 脂肪最高排行 */}
-      <SectionHeader
-        title="高脂肪食物"
-        subtitle="脂肪最高前 6 名"
-        textColor={textPrimary}
+      <FoodRail
+        title="减脂友好"
+        subtitle="每 100g 能量更低"
+        items={lowEnergyFoods}
+        colors={colors}
+        accent="#2F855A"
+        valueFor={(food) => `${formatNutrient(food.energy)} kcal`}
+        detailFor={(food) => `水分 ${formatNutrient(food.water)}g`}
+        onPress={goFood}
       />
-      <ScrollView
-        horizontal
-        showsHorizontalScrollIndicator={false}
-        style={styles.hScroll}
-        contentContainerStyle={styles.hScrollContent}
-      >
-        {highestFat.map((item) => (
-          <RankCard
-            key={item.id}
-            item={item}
-            onPress={() => goFood(item.id)}
-            valueLabel={`脂肪 ${item.fat}g`}
-            valueSub="/100g"
-            cardBg={cardBg}
-            textPrimary={textPrimary}
-            textSecondary={textSecondary}
-            accentColor="#E57373"
-            isDark={isDark}
-          />
-        ))}
-      </ScrollView>
+
+      <FoodRail
+        title="补蛋白优选"
+        subtitle="高蛋白，同时热量适中"
+        items={proteinFoods}
+        colors={colors}
+        accent="#FF6B35"
+        valueFor={(food) => `蛋白 ${formatNutrient(food.protein)}g`}
+        detailFor={(food) => `${formatNutrient(food.energy)} kcal`}
+        onPress={goFood}
+      />
+
+      <View className="mt-6 px-4">
+        <View
+          className="rounded-2xl p-4"
+          style={{
+            backgroundColor: colors.surface,
+            borderColor: colors.border,
+            borderWidth: 1,
+          }}
+        >
+          <View className="mb-3 flex-row items-center justify-between">
+            <View>
+              <Text
+                className="text-[17px] font-bold"
+                style={{ color: colors.text }}
+              >
+                常见对比
+              </Text>
+              <Text
+                className="mt-1 text-[12px]"
+                style={{ color: colors.muted }}
+              >
+                相似食物，热量差别可能很明显
+              </Text>
+            </View>
+            <Ionicons
+              name="swap-horizontal-outline"
+              size={22}
+              color="#FF6B35"
+            />
+          </View>
+          {pairs.map((pair) => (
+            <CompareRow
+              key={`${pair.left.id}-${pair.right.id}`}
+              left={pair.left}
+              right={pair.right}
+              colors={colors}
+              onPress={goFood}
+            />
+          ))}
+        </View>
+      </View>
+
+      <FoodRail
+        title="高热量提醒"
+        subtitle="适合少量吃，别无意识加量"
+        items={highEnergyFoods}
+        colors={colors}
+        accent="#C05621"
+        valueFor={(food) => `${formatNutrient(food.energy)} kcal`}
+        detailFor={(food) => `脂肪 ${formatNutrient(food.fat)}g`}
+        onPress={goFood}
+      />
     </ScrollView>
   );
 }
 
-// ── 子组件 ──────────────────────────────────────────
-
-function SectionHeader({
-  title,
-  subtitle,
-  textColor,
+function StatPill({
+  value,
+  label,
+  colors,
 }: {
-  title: string;
-  subtitle?: string;
-  textColor: string;
+  value: number | string;
+  label: string;
+  colors: HomeColors;
 }) {
   return (
-    <View style={styles.sectionHeader}>
-      <Text style={[styles.sectionTitle, { color: textColor }]}>{title}</Text>
-      {subtitle && <Text style={styles.sectionSubtitle}>{subtitle}</Text>}
+    <View
+      className="flex-1 rounded-xl px-3 py-3"
+      style={{
+        backgroundColor: colors.surface,
+        borderColor: colors.border,
+        borderWidth: 1,
+      }}
+    >
+      <Text className="text-[18px] font-extrabold text-primary">{value}</Text>
+      <Text className="mt-1 text-[11px]" style={{ color: colors.muted }}>
+        {label}
+      </Text>
     </View>
   );
 }
 
-interface RankCardProps {
-  item: FoodItem;
-  onPress: () => void;
-  valueLabel: string;
-  valueSub: string;
-  cardBg: string;
-  textPrimary: string;
-  textSecondary: string;
-  accentColor: string;
-  isDark: boolean;
+function SectionHeader({
+  title,
+  subtitle,
+  colors,
+}: {
+  title: string;
+  subtitle: string;
+  colors: HomeColors;
+}) {
+  return (
+    <View className="mt-7 mb-3 flex-row items-end justify-between px-4">
+      <Text className="text-[18px] font-bold" style={{ color: colors.text }}>
+        {title}
+      </Text>
+      <Text className="text-[12px]" style={{ color: colors.muted }}>
+        {subtitle}
+      </Text>
+    </View>
+  );
 }
 
-function RankCard({
-  item,
+function CategoryTile({
+  category,
+  count,
+  icon,
+  tone,
+  hint,
+  colors,
   onPress,
-  valueLabel,
-  valueSub,
-  cardBg,
-  textPrimary,
-  textSecondary,
-  accentColor,
-  isDark,
-}: RankCardProps) {
+}: {
+  category: string;
+  count: number;
+  icon: IoniconName;
+  tone: string;
+  hint: string;
+  colors: HomeColors;
+  onPress: () => void;
+}) {
+  return (
+    <TouchableOpacity
+      className="min-h-[86px] flex-1 basis-[46%] rounded-2xl p-3"
+      style={{
+        backgroundColor: colors.surface,
+        borderColor: colors.border,
+        borderWidth: 1,
+      }}
+      onPress={onPress}
+      activeOpacity={0.78}
+    >
+      <View className="flex-row items-start justify-between">
+        <View
+          className="h-9 w-9 items-center justify-center rounded-xl"
+          style={{ backgroundColor: `${tone}18` }}
+        >
+          <Ionicons name={icon} size={19} color={tone} />
+        </View>
+        <Text className="text-[11px] font-semibold" style={{ color: tone }}>
+          {count} 种
+        </Text>
+      </View>
+      <Text
+        className="mt-3 text-[15px] font-bold"
+        style={{ color: colors.text }}
+      >
+        {category}
+      </Text>
+      <Text className="mt-1 text-[11px]" style={{ color: colors.muted }}>
+        {hint}
+      </Text>
+    </TouchableOpacity>
+  );
+}
+
+function FoodRail({
+  title,
+  subtitle,
+  items,
+  colors,
+  accent,
+  valueFor,
+  detailFor,
+  onPress,
+}: {
+  title: string;
+  subtitle: string;
+  items: FoodItem[];
+  colors: HomeColors;
+  accent: string;
+  valueFor: (food: FoodItem) => string;
+  detailFor: (food: FoodItem) => string;
+  onPress: (id: string) => void;
+}) {
+  return (
+    <View className="mt-7">
+      <SectionHeader title={title} subtitle={subtitle} colors={colors} />
+      <ScrollView
+        horizontal
+        showsHorizontalScrollIndicator={false}
+        contentContainerStyle={styles.railContent}
+      >
+        {items.map((food) => (
+          <FoodRailCard
+            key={food.id}
+            food={food}
+            colors={colors}
+            accent={accent}
+            value={valueFor(food)}
+            detail={detailFor(food)}
+            onPress={() => onPress(food.id)}
+          />
+        ))}
+      </ScrollView>
+    </View>
+  );
+}
+
+function FoodRailCard({
+  food,
+  colors,
+  accent,
+  value,
+  detail,
+  onPress,
+}: {
+  food: FoodItem;
+  colors: HomeColors;
+  accent: string;
+  value: string;
+  detail: string;
+  onPress: () => void;
+}) {
   const [imgError, setImgError] = useState(false);
-  const imageUrl = getFoodImageUrl(item.image);
+  const imageUrl = getFoodImageUrl(food.image);
   const showRemote = imageUrl && !imgError;
 
   return (
     <TouchableOpacity
-      style={[styles.rankCard, { backgroundColor: cardBg }]}
+      className="w-[142px] rounded-2xl p-2.5"
+      style={{
+        backgroundColor: colors.surface,
+        borderColor: colors.border,
+        borderWidth: 1,
+      }}
       onPress={onPress}
-      activeOpacity={0.75}
+      activeOpacity={0.78}
     >
-      {/* 食物图片 */}
       <View
-        className={`w-full rounded-xl overflow-hidden mb-1 ${isDark ? "bg-[#2a2a2a]" : "bg-[#f0f0f0]"}`}
-        style={{ height: 90 }}
+        className="h-[92px] w-full overflow-hidden rounded-xl"
+        style={{ backgroundColor: colors.input }}
       >
         <Image
           source={showRemote ? { uri: imageUrl } : noImage}
@@ -293,115 +472,104 @@ function RankCard({
           onError={() => setImgError(true)}
         />
       </View>
-
-      <Text style={[styles.rankName, { color: textPrimary }]} numberOfLines={2}>
-        {item.name}
+      <Text
+        className="mt-2 min-h-[36px] text-[13px] font-bold leading-[18px]"
+        style={{ color: colors.text }}
+        numberOfLines={2}
+      >
+        {food.name}
       </Text>
-      <Text style={[styles.rankValue, { color: accentColor }]}>
-        {valueLabel}
+      <Text
+        className="mt-1 text-[15px] font-extrabold"
+        style={{ color: accent }}
+      >
+        {value}
       </Text>
-      <Text style={[styles.rankSub, { color: textSecondary }]}>{valueSub}</Text>
+      <Text className="mt-0.5 text-[11px]" style={{ color: colors.muted }}>
+        {detail}
+      </Text>
     </TouchableOpacity>
   );
 }
 
-// ── 样式 ──────────────────────────────────────────
+function CompareRow({
+  left,
+  right,
+  colors,
+  onPress,
+}: {
+  left: FoodItem;
+  right: FoodItem;
+  colors: HomeColors;
+  onPress: (id: string) => void;
+}) {
+  return (
+    <View
+      className="mt-2 flex-row items-center rounded-xl px-3 py-2.5"
+      style={{ backgroundColor: colors.input }}
+    >
+      <CompareFood
+        food={left}
+        colors={colors}
+        onPress={() => onPress(left.id)}
+      />
+      <Text className="px-2 text-[12px] font-bold text-primary">VS</Text>
+      <CompareFood
+        food={right}
+        colors={colors}
+        onPress={() => onPress(right.id)}
+      />
+    </View>
+  );
+}
+
+function CompareFood({
+  food,
+  colors,
+  onPress,
+}: {
+  food: FoodItem;
+  colors: HomeColors;
+  onPress: () => void;
+}) {
+  return (
+    <Pressable className="flex-1" onPress={onPress}>
+      <Text
+        className="text-center text-[13px] font-semibold"
+        style={{ color: colors.text }}
+        numberOfLines={1}
+      >
+        {food.name}
+      </Text>
+      <Text
+        className="mt-0.5 text-center text-[11px]"
+        style={{ color: colors.muted }}
+      >
+        {formatNutrient(food.energy)} kcal / 100g
+      </Text>
+    </Pressable>
+  );
+}
+
+type HomeColors = {
+  bg: string;
+  surface: string;
+  elevated: string;
+  border: string;
+  text: string;
+  muted: string;
+  faint: string;
+  input: string;
+};
 
 const styles = StyleSheet.create({
-  scroll: { flex: 1 },
-
-  header: {
-    paddingHorizontal: 20,
-    paddingBottom: 8,
+  softShadow: {
+    boxShadow: "0px 3px 10px rgba(0, 0, 0, 0.08)",
+    elevation: 3,
   },
-  appTitle: {
-    fontSize: 26,
-    fontWeight: "800",
-    letterSpacing: 0.5,
-  },
-  appSubtitle: {
-    fontSize: 13,
-    marginTop: 2,
-  },
-
-  searchBar: {
-    flexDirection: "row",
-    alignItems: "center",
-    gap: 10,
-    marginHorizontal: 16,
-    marginVertical: 12,
-    paddingHorizontal: 16,
-    height: 46,
-    borderRadius: 14,
-    shadowColor: "#000",
-    shadowOffset: { width: 0, height: 1 },
-    shadowOpacity: 0.06,
-    shadowRadius: 4,
-    elevation: 2,
-  },
-  searchPlaceholder: {
-    fontSize: 15,
-    color: "#bbb",
-  },
-
-  sectionHeader: {
-    flexDirection: "row",
-    alignItems: "baseline",
-    gap: 8,
-    marginHorizontal: 16,
-    marginTop: 20,
-    marginBottom: 10,
-  },
-  sectionTitle: {
-    fontSize: 17,
-    fontWeight: "700",
-  },
-  sectionSubtitle: {
-    fontSize: 12,
-    color: "#aaa",
-  },
-
-  categoryGrid: {
-    flexDirection: "row",
-    flexWrap: "wrap",
-    paddingHorizontal: 12,
-    gap: 10,
-  },
-  categoryCard: {
-    width: "30%",
-    flexGrow: 1,
-    alignItems: "center",
-    paddingVertical: 14,
-    borderRadius: 14,
-    gap: 6,
-  },
-  categoryIcon: { fontSize: 26 },
-  categoryName: {
-    fontSize: 12,
-    fontWeight: "600",
-    textAlign: "center",
-    lineHeight: 16,
-  },
-
-  hScroll: { flexGrow: 0 },
-  hScrollContent: {
+  railContent: {
     paddingHorizontal: 16,
     gap: 10,
-    paddingBottom: 4,
+    paddingBottom: 2,
   },
-
-  rankCard: {
-    width: 130,
-    borderRadius: 14,
-    padding: 10,
-    gap: 4,
-    // shadowColor: "#000",
-    // shadowOffset: { width: 0, height: 1 },
-    // shadowOpacity: 0.06,
-    // shadowRadius: 4,
-    elevation: 2,
-  },
-  rankName: { fontSize: 13, fontWeight: "600", lineHeight: 18 },
-  rankValue: { fontSize: 14, fontWeight: "700", marginTop: 2 },
-  rankSub: { fontSize: 11 },
 });
