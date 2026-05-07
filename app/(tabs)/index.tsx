@@ -122,171 +122,162 @@ export default function HomeScreen() {
   );
 
   return (
-    <ScrollView
-      className={isDark ? "bg-bg-dark" : "bg-bg"}
+    <View
+      className={isDark ? "flex-1 bg-bg-dark" : "flex-1 bg-bg"}
       style={{ backgroundColor: colors.bg }}
-      contentContainerStyle={{ paddingBottom: 34 }}
-      showsVerticalScrollIndicator={false}
     >
-      <View className="px-5 pb-3" style={{ paddingTop: insets.top + 14 }}>
-        <View className="flex-row items-center justify-between">
-          <View>
-            <Text className="text-[28px] font-extrabold text-primary">
-              卡路里
-            </Text>
-            <Text className="mt-1 text-[13px]" style={{ color: colors.muted }}>
-              查食物、看营养，吃之前心里有数
-            </Text>
-          </View>
-          <View
-            className="h-11 w-11 items-center justify-center rounded-full"
-            style={{ backgroundColor: colors.elevated }}
+      <View
+        className="px-4"
+        style={[
+          styles.fixedHeader,
+          {
+            paddingTop: insets.top,
+            backgroundColor: colors.surface,
+            borderBottomColor: colors.border,
+          },
+        ]}
+      >
+        <View className="h-[64px] flex-row items-center justify-between">
+          <Text className="text-[22px] font-extrabold text-primary">
+            卡路里
+          </Text>
+          <Pressable
+            className="h-10 w-[240px] flex-row items-center rounded-full px-3"
+            style={{
+              backgroundColor: colors.surface,
+              borderColor: colors.border,
+              borderWidth: 1,
+            }}
+            onPress={() => goSearch()}
           >
-            <Ionicons name="sparkles-outline" size={21} color="#FF6B35" />
-          </View>
+            <Ionicons name="search" size={17} color={colors.faint} />
+            <Text
+              className="ml-2 flex-1 text-[14px]"
+              style={{ color: colors.faint }}
+              numberOfLines={1}
+            >
+              搜索食物
+            </Text>
+          </Pressable>
         </View>
       </View>
 
-      <View className="px-4">
-        <Pressable
-          className="h-[58px] flex-row items-center rounded-2xl px-4"
-          style={[styles.softShadow, { backgroundColor: colors.surface }]}
-          onPress={() => goSearch()}
-        >
-          <View
-            className="mr-3 h-9 w-9 items-center justify-center rounded-full"
-            style={{ backgroundColor: colors.input }}
-          >
-            <Ionicons name="search" size={18} color="#FF6B35" />
-          </View>
-          <View className="flex-1">
-            <Text
-              className="text-[16px] font-semibold"
-              style={{ color: colors.text }}
-            >
-              搜索食物名称或拼音
-            </Text>
-            <Text
-              className="mt-0.5 text-[12px]"
-              style={{ color: colors.faint }}
-            >
-              例如：鸡蛋、jidan、苹果
-            </Text>
-          </View>
-          <Ionicons name="chevron-forward" size={18} color={colors.faint} />
-        </Pressable>
-      </View>
+      <ScrollView
+        style={{ backgroundColor: colors.bg }}
+        contentContainerStyle={{ paddingTop: 20, paddingBottom: 34 }}
+        showsVerticalScrollIndicator={false}
+      >
+        <View className="flex-row gap-2 px-4">
+          <StatPill value={foods.length} label="食物条目" colors={colors} />
+          <StatPill
+            value={CATEGORIES.length - 1}
+            label="食物分类"
+            colors={colors}
+          />
+          <StatPill value="100g" label="统一口径" colors={colors} />
+        </View>
 
-      <View className="mt-4 flex-row gap-2 px-4">
-        <StatPill value={foods.length} label="食物条目" colors={colors} />
-        <StatPill
-          value={CATEGORIES.length - 1}
-          label="常用分类"
+        <SectionHeader
+          title="按场景找"
+          subtitle="先选大类，再精确搜索"
           colors={colors}
         />
-        <StatPill value="100g" label="统一口径" colors={colors} />
-      </View>
-
-      <SectionHeader
-        title="按场景找"
-        subtitle="先选大类，再精确搜索"
-        colors={colors}
-      />
-      <View className="flex-row flex-wrap gap-2 px-4">
-        {CATEGORIES.filter((category) => category !== "全部").map(
-          (category) => {
-            const meta = CATEGORY_META[category];
-            return (
-              <CategoryTile
-                key={category}
-                category={category}
-                count={categoryCounts[category] ?? 0}
-                icon={meta.icon}
-                tone={meta.tone}
-                hint={meta.hint}
-                colors={colors}
-                onPress={() => goSearch(category)}
-              />
-            );
-          },
-        )}
-      </View>
-
-      <FoodRail
-        title="减脂友好"
-        subtitle="每 100g 能量更低"
-        items={lowEnergyFoods}
-        colors={colors}
-        accent="#2F855A"
-        valueFor={(food) => `${formatNutrient(food.energy)} kcal`}
-        detailFor={(food) => `水分 ${formatNutrient(food.water)}g`}
-        onPress={goFood}
-      />
-
-      <FoodRail
-        title="补蛋白优选"
-        subtitle="高蛋白，同时热量适中"
-        items={proteinFoods}
-        colors={colors}
-        accent="#FF6B35"
-        valueFor={(food) => `蛋白 ${formatNutrient(food.protein)}g`}
-        detailFor={(food) => `${formatNutrient(food.energy)} kcal`}
-        onPress={goFood}
-      />
-
-      <View className="mt-6 px-4">
-        <View
-          className="rounded-2xl p-4"
-          style={{
-            backgroundColor: colors.surface,
-            borderColor: colors.border,
-            borderWidth: 1,
-          }}
-        >
-          <View className="mb-3 flex-row items-center justify-between">
-            <View>
-              <Text
-                className="text-[17px] font-bold"
-                style={{ color: colors.text }}
-              >
-                常见对比
-              </Text>
-              <Text
-                className="mt-1 text-[12px]"
-                style={{ color: colors.muted }}
-              >
-                相似食物，热量差别可能很明显
-              </Text>
-            </View>
-            <Ionicons
-              name="swap-horizontal-outline"
-              size={22}
-              color="#FF6B35"
-            />
-          </View>
-          {pairs.map((pair) => (
-            <CompareRow
-              key={`${pair.left.id}-${pair.right.id}`}
-              left={pair.left}
-              right={pair.right}
-              colors={colors}
-              onPress={goFood}
-            />
-          ))}
+        <View className="flex-row flex-wrap gap-2 px-4">
+          {CATEGORIES.filter((category) => category !== "全部").map(
+            (category) => {
+              const meta = CATEGORY_META[category];
+              return (
+                <CategoryTile
+                  key={category}
+                  category={category}
+                  count={categoryCounts[category] ?? 0}
+                  icon={meta.icon}
+                  tone={meta.tone}
+                  hint={meta.hint}
+                  colors={colors}
+                  onPress={() => goSearch(category)}
+                />
+              );
+            },
+          )}
         </View>
-      </View>
 
-      <FoodRail
-        title="高热量提醒"
-        subtitle="适合少量吃，别无意识加量"
-        items={highEnergyFoods}
-        colors={colors}
-        accent="#C05621"
-        valueFor={(food) => `${formatNutrient(food.energy)} kcal`}
-        detailFor={(food) => `脂肪 ${formatNutrient(food.fat)}g`}
-        onPress={goFood}
-      />
-    </ScrollView>
+        <FoodRail
+          title="减脂友好"
+          subtitle="每 100g 能量更低"
+          items={lowEnergyFoods}
+          colors={colors}
+          accent="#2F855A"
+          valueFor={(food) => `${formatNutrient(food.energy)} kcal`}
+          detailFor={(food) => `水分 ${formatNutrient(food.water)}g`}
+          onPress={goFood}
+        />
+
+        <FoodRail
+          title="补蛋白优选"
+          subtitle="高蛋白，同时热量适中"
+          items={proteinFoods}
+          colors={colors}
+          accent="#FF6B35"
+          valueFor={(food) => `蛋白 ${formatNutrient(food.protein)}g`}
+          detailFor={(food) => `${formatNutrient(food.energy)} kcal`}
+          onPress={goFood}
+        />
+
+        <View className="mt-6 px-4">
+          <View
+            className="rounded-2xl p-4"
+            style={{
+              backgroundColor: colors.surface,
+              borderColor: colors.border,
+              borderWidth: 1,
+            }}
+          >
+            <View className="mb-3 flex-row items-center justify-between">
+              <View>
+                <Text
+                  className="text-[17px] font-bold"
+                  style={{ color: colors.text }}
+                >
+                  常见对比
+                </Text>
+                <Text
+                  className="mt-1 text-[12px]"
+                  style={{ color: colors.muted }}
+                >
+                  相似食物，热量差别可能很明显
+                </Text>
+              </View>
+              <Ionicons
+                name="swap-horizontal-outline"
+                size={22}
+                color="#FF6B35"
+              />
+            </View>
+            {pairs.map((pair) => (
+              <CompareRow
+                key={`${pair.left.id}-${pair.right.id}`}
+                left={pair.left}
+                right={pair.right}
+                colors={colors}
+                onPress={goFood}
+              />
+            ))}
+          </View>
+        </View>
+
+        <FoodRail
+          title="高热量提醒"
+          subtitle="适合少量吃，别无意识加量"
+          items={highEnergyFoods}
+          colors={colors}
+          accent="#C05621"
+          valueFor={(food) => `${formatNutrient(food.energy)} kcal`}
+          detailFor={(food) => `脂肪 ${formatNutrient(food.fat)}g`}
+          onPress={goFood}
+        />
+      </ScrollView>
+    </View>
   );
 }
 
@@ -563,9 +554,8 @@ type HomeColors = {
 };
 
 const styles = StyleSheet.create({
-  softShadow: {
-    boxShadow: "0px 3px 10px rgba(0, 0, 0, 0.08)",
-    elevation: 3,
+  fixedHeader: {
+    borderBottomWidth: StyleSheet.hairlineWidth,
   },
   railContent: {
     paddingHorizontal: 16,
