@@ -1,0 +1,22 @@
+name: Ping Supabase Storage
+
+on:
+  schedule:
+    - cron: "0 0 */5 * *"
+  workflow_dispatch:
+
+jobs:
+  ping:
+    runs-on: ubuntu-latest
+    env:
+      PING_URL: ${{ secrets.SUPABASE_STATIC_PING_URL }}
+    steps:
+      - name: Ping static asset URL
+        run: |
+          if [ -z "$PING_URL" ]; then
+            echo "SUPABASE_STATIC_PING_URL secret is not set"
+            exit 1
+          fi
+          HTTP_CODE=$(curl -fsSL -o /dev/null -w "%{http_code}" "$PING_URL")
+          echo "HTTP $HTTP_CODE"
+          test "$HTTP_CODE" = "200"
