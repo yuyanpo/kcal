@@ -2,7 +2,8 @@ name: Ping Supabase Storage
 
 on:
   schedule:
-    - cron: "0 0 */5 * *"
+    # 每天 10:00（UTC+8）= 02:00 UTC
+    - cron: "0 2 * * *"
   workflow_dispatch:
 
 jobs:
